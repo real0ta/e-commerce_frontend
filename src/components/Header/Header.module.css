@@ -1,0 +1,42 @@
+.container {
+  height:20vh;
+}
+.nav{
+  height:100%;
+  width:100%;
+}
+
+.nav_item {
+  height:50%;
+  display:flex;
+  justify-content:space-around;
+  align-content: center;
+  padding:1rem;
+}
+.logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.items{
+  column-gap: 3rem;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.links_container {
+  display: flex;
+  height: 50%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.links {
+  column-gap: 3rem;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
