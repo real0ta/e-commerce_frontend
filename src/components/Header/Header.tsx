@@ -12,7 +12,7 @@ const Header = () => {
             <div>Login</div>
           </div>
         </div>
-        <div className={styles.link_contaienr}>
+        <div className={styles.links_container}>
           <div className={styles.links}>
             <a href="/">Home</a>
             <a href="">Products</a>
