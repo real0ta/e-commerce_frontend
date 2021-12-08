@@ -1,6 +1,6 @@
 import styles from './Products.module.css'
 const Products = () => {
-  return <div>
+  return <div className={styles.container}>
     Products
   </div>
 }
