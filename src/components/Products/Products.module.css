@@ -6,3 +6,20 @@
   border-radius: 15px;
   background-color: gray;
 }
+.item {
+  padding: .5rem;
+  border-radius: 10px;
+  background-color: red;
+  width: 20%;
+  height: 20rem;
+}
+.img {
+  height: 80%;
+  background-color: blue;
+}
+
+.info{
+  display: flex;
+  justify-content:space-between;
+  padding:.3rem
+}
