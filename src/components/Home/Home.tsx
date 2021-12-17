@@ -5,6 +5,10 @@ const Home = () => {
   return <div className={styles.container}>
     <Categories />
     <Products />
+
+
+
+
   </div>
 }
 
