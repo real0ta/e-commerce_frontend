@@ -1,13 +1,11 @@
-.container {
-  height:20vh;
-}
 .nav{
   height:100%;
   width:100%;
 }
 
 .nav_item {
-  height:50%;
+   background-color:#e5e7e9; 
+  height:40%;
   display:flex;
   justify-content:space-around;
   align-content: center;
@@ -29,7 +27,7 @@
 
 .links_container {
   display: flex;
-  height: 50%;
+  padding: 1.5rem;
   justify-content: space-around;
   align-items: center;
 }
