@@ -1,6 +1,5 @@
 .container {
-  background-color: rgba(00,00,00, 0.04);
   display: flex;
-  padding: 1rem 2.5rem 1rem 2.5rem;
+  padding:1rem 7rem 1rem 7rem;
 
 }

@@ -3,7 +3,8 @@
   padding: .5rem;
   border-radius: 10px;
   height: 25rem;
-  background-color: white;
+  width:32%;
+  background-color: #F6F7F8;
 }
 .img_container {
   height: 85%;
