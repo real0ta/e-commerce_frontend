@@ -1,5 +1,28 @@
 .container {
   display: flex;
   padding:1rem 7rem 1rem 7rem;
+}
 
+@media (max-width:900px){
+  .container {
+    padding:.5rem 4rem;
+  }
+}
+
+@media (max-width:800px){
+  .container {
+    padding: .5rem 4rem;
+  }
+}
+
+@media (max-width: 500px){
+  .container {
+    padding: .5rem 1rem;
+  }
+}
+
+@media (max-width: 400px){
+  .container {
+    display: block;
+  }
 }
