@@ -42,3 +42,8 @@
   align-content: center;
   align-items: center;
 }
+@media (max-width: 440px) {
+  .links_container {
+    display: none;
+  }
+}

@@ -1,5 +1,8 @@
 .container {
   width: 100%;
-  height: 10rem;
-  background-color:    #abb2b9 ;
+
+  background-color:    #40BFFF ;
+  display: flex;
+  justify-content: space-around;
+  padding :6rem;
 }

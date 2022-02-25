@@ -2,7 +2,7 @@
   margin:.4rem;
   padding: .5rem;
   border-radius: 10px;
-  height: 20rem;
+  height: fit-content;
   width:30%;
   background-color: #F6F7F8;
 }
@@ -20,28 +20,32 @@
   padding:.3rem
 }
 
-@media (max-width:900px){
-  .item{
-    width:45%;
-  }
-}
-
-@media(max-width:700px){
+@media(max-width:660px){
   .item {
-    width:65%;
+    width:45%;
 
   }
 }
 
 @media (max-width: 600px){
   .item {
-    width:80%;
+
+
   }
 }
 
 @media (max-width: 550px){
   .item {
-    width:100%;
+    width:40%;
     padding: .5rem 0;
+  }
+  .img_container {
+    height: 50% ;
+  }
+}
+
+@media (max-width:440px){
+  .item {
+    width:45%;
   }
 }

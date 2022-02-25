@@ -1,8 +1,8 @@
 .container {
-    margin: 1rem .3rem 1rem ;
-    background-color: #F6F7F8;
- border-radius: 5px;
- height: fit-content;
+  margin: 1rem .3rem 1rem ;
+  background-color: #F6F7F8;
+  border-radius: 5px;
+  height: fit-content;
 }
 
 .item {
@@ -11,4 +11,9 @@
 }
 .item:hover{
   background-color: rgba(00, 00, 00, .1);
+}
+@media (max-width:440px){
+  .container {
+    margin: 0;
+  }
 }

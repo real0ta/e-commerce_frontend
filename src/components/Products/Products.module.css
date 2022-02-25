@@ -12,3 +12,8 @@
     justify-content: center;
   }
 }
+@media (max-width:440px) {
+  .container {
+    padding: 0;
+  }
+}
