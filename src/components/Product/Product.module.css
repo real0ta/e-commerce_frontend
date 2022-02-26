@@ -8,7 +8,7 @@
 }
 .img_container {
   height: 85%;
-  background-color: rgba(00,00,00, 0.4);
+
 }
 .img {
   height: 100%;
@@ -20,16 +20,9 @@
   padding:.3rem
 }
 
-@media(max-width:660px){
+@media(max-width:670px){
   .item {
     width:45%;
-
-  }
-}
-
-@media (max-width: 600px){
-  .item {
-
 
   }
 }
