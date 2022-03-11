@@ -1,0 +1,13 @@
+.container {
+  width: 15rem;
+  height: 20rem;
+  position: absolute;
+  top: 4.1rem;
+  border: 1px solid rgba(00, 00, 00, .1);
+  background-color: white;
+}
+
+.products {
+  height: 80%;
+    padding: .3rem;
+}
