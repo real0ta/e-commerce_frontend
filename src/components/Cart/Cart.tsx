@@ -6,6 +6,12 @@ const Cart = () => {
         <div className={styles.container}>
             <div className={styles.products}>
                 <CartItem />
+                <CartItem />
+                <CartItem />
+                <CartItem />
+            </div>
+            <div className={styles.btn_container}>
+                <button className={styles.btn}>CHECKOUT</button>
             </div>
         </div>
     );

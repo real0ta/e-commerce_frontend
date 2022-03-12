@@ -1,7 +1,11 @@
+import { useState } from "react";
 import Search from "../Search/Search";
 import styles from "./Header.module.css";
 
+import Cart from "../Cart/Cart";
+
 const Header = () => {
+    const [cart, setCart] = useState(false);
     return (
         <header className={styles.container}>
             <nav className={styles.nav}>
@@ -9,7 +13,8 @@ const Header = () => {
                     <div className={styles.logo}>Logo</div>
                     <Search />
                     <div className={styles.items}>
-                        <div>Cart</div>
+                        <div onClick={() => setCart((prevState) => !prevState)}> Cart</div>
+                        {cart ? <Cart /> : null}
                         <div>Login</div>
                     </div>
                 </div>
