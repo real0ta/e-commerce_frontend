@@ -1,0 +1,9 @@
+.container {
+  padding: 2rem 13rem;
+  display: flex;}
+
+
+.registration {
+  width: 50%;
+  background-color: blue;
+}

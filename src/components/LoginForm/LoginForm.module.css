@@ -1,0 +1,20 @@
+.container{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 4rem;
+}
+
+.container form{
+  display: flex;
+  flex-direction: column;
+}
+
+.container button {
+  width: 50%;
+  padding: .7rem 1rem;
+  background-color: red;
+  outline: none;
+  border:none;
+  margin-top: ;
+}
