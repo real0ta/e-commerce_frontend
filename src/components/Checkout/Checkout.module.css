@@ -1,0 +1,21 @@
+.container {
+  padding: 2rem 20rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 50vh;
+}
+
+.info {
+  display:  flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(00, 00, 00, .3);
+  padding: 1rem;
+  align-items: center;
+
+}
+
+.info h3 {
+  width: 25%;
+  display: flex;
+  justify-content: center;
+}

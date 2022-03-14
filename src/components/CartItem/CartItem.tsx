@@ -1,4 +1,5 @@
 import styles from "./CartItem.module.css";
+
 const CartItem = () => (
     <article className={styles.product}>
         <img

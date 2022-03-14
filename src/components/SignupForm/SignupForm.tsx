@@ -8,7 +8,7 @@ const SignupForm = () => {
         <FormInput name="password" label="Password" inputType="password" />
         <FormInput name="password" label="Password" inputType="password" />
       </form>
-      <button>Sign in</button>
+      <button>Sign Up</button>
     </div>
   );
 };
