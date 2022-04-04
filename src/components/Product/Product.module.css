@@ -3,7 +3,7 @@
   padding: .5rem;
   border-radius: 10px;
   width:30%;
-  height: fit-content;
+
   background-color: #F6F7F8;
   cursor: pointer;
 }
@@ -12,8 +12,9 @@
 
 }
 .img {
-  height: 100%;
+  height: 350px;
   width: 100%;
+  border-radius: 5px;
 }
 .info{
   display: flex;
