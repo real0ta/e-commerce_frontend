@@ -29,6 +29,11 @@
   border-radius: 5px;
   color: white;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+
 }
 .btn:hover {
   background-color: rgba(00, 00, 00, .6);

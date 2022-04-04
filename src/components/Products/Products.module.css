@@ -1,5 +1,5 @@
 .container {
-  max-width:100%;
+  width:80%;
   padding:.5rem;
   display: flex;
   align-items: center;
@@ -14,6 +14,7 @@
 }
 @media (max-width:440px) {
   .container {
+    width: 100%;
     padding: 0;
   }
 }
