@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom";
+
 import CartItem from "../CartItem/CartItem";
 import styles from "./Cart.module.css";
 
-const Cart = () => {
+const Cart = (): JSX.Element => {
     return (
         <div className={styles.container}>
             <div className={styles.products}>
@@ -11,7 +13,9 @@ const Cart = () => {
                 <CartItem />
             </div>
             <div className={styles.btn_container}>
-                <button className={styles.btn}>CHECKOUT</button>
+                <Link className={styles.btn} to="/chekout">
+                    CHECKOUT
+                </Link>
             </div>
         </div>
     );

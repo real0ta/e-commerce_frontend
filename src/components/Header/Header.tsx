@@ -1,8 +1,8 @@
 import { useState } from "react";
 import Search from "../Search/Search";
 import styles from "./Header.module.css";
-
 import Cart from "../Cart/Cart";
+import { Link } from "react-router-dom";
 
 const Header = () => {
     const [cart, setCart] = useState(false);
@@ -15,15 +15,14 @@ const Header = () => {
                     <div className={styles.items}>
                         <div onClick={() => setCart((prevState) => !prevState)}> Cart</div>
                         {cart ? <Cart /> : null}
-                        <div>Login</div>
+                        <Link to="/login">Login</Link>
                     </div>
                 </div>
                 <div className={styles.links_container}>
                     <div className={styles.links}>
-                        <a href="/">Home</a>
-                        <a href="">Products</a>
-                        <a href="">About us</a>
-                        <a href="">Contact</a>
+                        <Link to="/">Home</Link>
+                        <Link to="/">Products</Link>
+                        <Link to="/">Contact</Link>
                     </div>
                 </div>
             </nav>
