@@ -1,14 +1,11 @@
 .container {
-  padding: 2rem 13rem;
+  padding: 2rem 15rem;
   display: flex;
-
 }
 
 .item {
   display: flex;
   justify-content: space-between;
-
-
 }
 
 .image_container {
