@@ -28,3 +28,16 @@
 .container button:hover {
   background-color: rgba(00, 00, 00, .3);
 }
+
+
+@media (max-width: 900px) {
+  .container {
+    padding: 0 2rem 1rem 2rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .container {
+    width: 100%;
+  }
+}
