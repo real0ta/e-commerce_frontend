@@ -1,16 +1,30 @@
+import React from "react";
 import styles from "./FormInput.module.css";
 
 interface Props {
     name: string;
     label: string;
     inputType: string;
+    required?: boolean;
+    onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
+    value?: string;
 }
 
-const FormInput: React.FC<Props> = ({ label, inputType, name }) => {
+const FormInput = ({
+    label,
+    inputType,
+    name,
+    ...otherProps
+}: Props): JSX.Element => {
     return (
         <>
             <label className={styles.label}>{label}</label>
-            <input className={styles.input} type={inputType} name={name} />
+            <input
+                {...otherProps}
+                className={styles.input}
+                type={inputType}
+                name={name}
+            />
         </>
     );
 };
