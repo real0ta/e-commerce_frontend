@@ -12,6 +12,13 @@
 }
 
 
+.error {
+  color: red;
+  font-size: .8rem;
+  margin-top: -1rem;
+  padding-bottom: 1rem;
+}
+
 .container form{
   display: flex;
   flex-direction: column;

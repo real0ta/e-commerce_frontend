@@ -14,6 +14,7 @@ const SignupForm = (): JSX.Element => {
     const [response, setResponse] = useState<any>("");
     const [resError, setResError] = useState("");
     const validate = () => {
+        setError(false);
         setPasswordError(undefined);
         setUsernameError(undefined);
         if (password1 !== password2) {
@@ -25,7 +26,7 @@ const SignupForm = (): JSX.Element => {
             setError(true);
         }
     };
-    const handleSubmit = async (e: any) => {
+    const handleSubmit = async (e: React.SyntheticEvent) => {
         e.preventDefault();
         setResError("");
         setResponse("");
@@ -33,7 +34,7 @@ const SignupForm = (): JSX.Element => {
         setUsernameError("");
         validate();
 
-        if (error) {
+        if (!error) {
             try {
                 const res = await instance.post("/user/", {
                     email,
