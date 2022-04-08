@@ -11,7 +11,7 @@ type Props = {
 
 const Product = ({ id, name, price, image }: Props) => (
     <article className={styles.item}>
-        <div className={styles.img_container}>
+        <div>
             <Link to={`/products/${id}`}>
                 <img
                     alt="product"

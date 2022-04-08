@@ -1,9 +1,14 @@
 .container {
   display: flex;
   justify-content: center;
-  padding: 1rem 7rem;
+  padding: 1rem 10rem;
 }
 
+@media (max-width: 1000px) {
+  .container {
+    padding: 1rem 7rem;
+  }
+}
 @media (max-width:900px){
   .container {
     padding:.5rem 4rem;
@@ -12,17 +17,23 @@
 
 @media (max-width:800px){
   .container {
-    padding: .5rem 4rem;
+    padding: .5rem 3rem;
   }
 }
 
-@media (max-width: 550px){
+@media (max-width: 700px) {
+  .container {
+    padding: .5rem 2rem;
+  }
+}
+
+@media (max-width: 650px){
   .container {
     padding: .5rem 1rem;
   }
 }
 
-@media (max-width: 440px){
+@media (max-width: 480px){
   .container {
     display: block;
   }

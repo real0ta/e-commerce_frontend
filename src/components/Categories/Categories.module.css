@@ -22,7 +22,7 @@
 .item:hover{
   background-color: rgba(00, 00, 00, .1);
 }
-@media (max-width:440px){
+@media (max-width:480px){
   .container {
     margin: 0;
   }
