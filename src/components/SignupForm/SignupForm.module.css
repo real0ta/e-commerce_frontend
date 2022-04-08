@@ -16,6 +16,19 @@
   flex-direction: column;
 }
 
+.success {
+  color: green;
+  font-size: .8rem;
+  margin-top: -1rem;
+  padding-bottom: 1rem;
+}
+
+.error {
+  color: red;
+  font-size: .8rem;
+  margin-top: -1rem;
+  padding-bottom: 1rem;
+}
 
 .container button {
   width: 50%;

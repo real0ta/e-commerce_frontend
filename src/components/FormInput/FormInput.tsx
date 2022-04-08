@@ -6,6 +6,7 @@ interface Props {
     label: string;
     inputType: string;
     required?: boolean;
+    minLength?: number;
     onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
     value?: string;
 }
