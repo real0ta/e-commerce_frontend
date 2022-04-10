@@ -13,6 +13,7 @@ type productTypes = {
 };
 
 const Products = () => {
+    const [error, setError] = useState(false);
     const products = useSelector((state: RootState) => state.products);
     const dispatch = useDispatch();
     useEffect(() => {
@@ -20,13 +21,23 @@ const Products = () => {
             instance
                 .get("/product")
                 .then((res) => {
+                    if (error) setError(false);
                     dispatch(addProducts(res.data.products));
                 })
                 .catch((err) => {
-                    console.log(err);
+                    setError(true);
                 });
         }
-    }, []);
+    }, [products]);
+
+    if (error) {
+        return (
+            <div className={styles.error}>
+                <span>Error! </span> Could not load products
+            </div>
+        );
+    }
+
     return (
         <div className={styles.container}>
             {products.products.map(({ name, price, photo, _id }: productTypes) => (
