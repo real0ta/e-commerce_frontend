@@ -3,7 +3,7 @@ import FormInput from "../FormInput/FormInput";
 import styles from "./LoginForm.module.css";
 import instance from "../../utils/axios";
 import { useDispatch } from "react-redux";
-import { addAccessToken, addRefreshToken } from "../../features/user/userSlice";
+import { addAccessToken, addRefreshToken, Authenticate } from "../../features/user/userSlice";
 
 const LoginForm = () => {
     const [email, setEmail] = useState<string>("");
@@ -22,6 +22,7 @@ const LoginForm = () => {
             });
             dispatch(addAccessToken(res.data.accessToken));
             dispatch(addRefreshToken(res.data.refreshToken));
+            dispatch(Authenticate(true));
         } catch (err: any) {
             setError(true);
         }

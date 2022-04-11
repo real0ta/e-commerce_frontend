@@ -6,6 +6,7 @@ import Footer from "./components/Footer/Footer";
 import ProductPage from "./components/ProductPage/ProductPage";
 import LoginPage from "./components/LoginPage/LoginPage";
 import Checkout from "./components/Checkout/Checkout";
+import ProtectedRoute from "./utils/protectedRoute";
 
 function App() {
     return (
@@ -15,7 +16,14 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/products/:id" element={<ProductPage />} />
-                    <Route path="/login" element={<LoginPage />} />
+                    <Route
+                        path="/login"
+                        element={
+                            <ProtectedRoute>
+                                <LoginPage />
+                            </ProtectedRoute>
+                        }
+                    />
                     <Route path="/checkout" element={<Checkout />} />
                 </Routes>
                 <Footer />
