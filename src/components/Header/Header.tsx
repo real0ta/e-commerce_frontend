@@ -3,9 +3,12 @@ import Search from "../Search/Search";
 import styles from "./Header.module.css";
 import Cart from "../Cart/Cart";
 import { Link } from "react-router-dom";
+import { RootState } from "../../app/store";
+import { useSelector } from "react-redux";
 
 const Header = () => {
     const [cart, setCart] = useState(false);
+    const user = useSelector((state: RootState) => state.user);
     return (
         <header className={styles.container}>
             <nav className={styles.nav}>
@@ -15,7 +18,11 @@ const Header = () => {
                     <div className={styles.items}>
                         <div onClick={() => setCart((prevState) => !prevState)}> Cart</div>
                         {cart ? <Cart /> : null}
-                        <Link to="/login">Login</Link>
+                        {user.authenticated ? (
+                            <p>logout</p>
+                        ) : (
+                            <Link to="/login">Login</Link>
+                        )}
                     </div>
                 </div>
                 <div className={styles.links_container}>
