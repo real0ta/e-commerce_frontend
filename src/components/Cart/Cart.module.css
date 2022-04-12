@@ -32,9 +32,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
-
 }
+
+.noItem {
+  text-align: center;
+  padding-top: 1rem;
+}
+
 .btn:hover {
   background-color: rgba(00, 00, 00, .6);
 }

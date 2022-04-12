@@ -1,14 +1,17 @@
 import styles from "./CheckoutItem.module.css";
 
-const CheckoutItem = () => {
+type Props = {
+    price: number;
+    name: string;
+    image: string;
+    amount: number;
+};
+const CheckoutItem = ({ price, image, amount, name }: Props) => {
     return (
         <article className={styles.item}>
-            <img
-                src="https://images.pexels.com/photos/1958587/pexels-photo-1958587.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-                alt="product"
-            />
-            <p>20$</p>
-            <p>20</p>
+            <img src={`http://localhost:3001/${image}`} alt={name} />
+            <p>{price}$</p>
+            <p>{amount}</p>
             <p>X</p>
         </article>
     );

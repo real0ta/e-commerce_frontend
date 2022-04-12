@@ -1,16 +1,32 @@
 import CheckoutItem from "../CheckoutItem/CheckoutItem";
 import styles from "./Checkout.module.css";
+import { useSelector } from "react-redux";
+import { RootState } from "../../app/store";
 
 const Checkout = () => {
+    const items = useSelector((state: RootState) => state.products.cart);
+    console.log(items);
+
     return (
         <div className={styles.container}>
             <div className={styles.info}>
-                <h3>Product</h3>
+                <h3 className={styles.product}>Product</h3>
                 <h3>Price</h3>
                 <h3>Quantity</h3>
                 <h3>Remove</h3>
             </div>
-            <CheckoutItem />
+            {items.map(({ id, name, amount, image, price }) => (
+                <CheckoutItem
+                    key={id}
+                    name={name}
+                    amount={amount}
+                    image={image}
+                    price={price}
+                />
+            ))}
+            {items.length === 0 ? (
+                <p className={styles.error}>Add products to cart</p>
+            ) : null}
         </div>
     );
 };

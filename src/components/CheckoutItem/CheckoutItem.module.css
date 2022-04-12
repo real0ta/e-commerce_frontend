@@ -1,13 +1,16 @@
 .item {
-  display:  flex;
+  display: flex;
   justify-content: space-between;
-  padding:2rem 1rem 1rem 1rem;
+  padding: 1rem;
   align-items: center;
 }
 
+.item img {
+  max-width: 30%;
+  flex-basis: 50%;
+}
 .item p,
 .item img {
-  width: 25%;
   display: flex;
   justify-content: center;
 }

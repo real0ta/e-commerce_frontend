@@ -22,11 +22,11 @@ const Cart = (): JSX.Element => {
                         />
                     ))
                 ) : (
-                    <p>No items</p>
+                    <p className={styles.noItem}>Add items to cart</p>
                 )}
             </div>
             <div className={styles.btn_container}>
-                <Link className={styles.btn} to="/chekout">
+                <Link className={styles.btn} to="/checkout">
                     CHECKOUT
                 </Link>
             </div>
