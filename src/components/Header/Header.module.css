@@ -28,6 +28,10 @@
   align-items: center;
 }
 
+.items .cart {
+  cursor: pointer;
+}
+
 .links_container {
   display: flex;
   padding: 1.5rem;

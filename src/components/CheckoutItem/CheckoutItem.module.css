@@ -6,11 +6,11 @@
 }
 
 .item img {
-  max-width: 30%;
   flex-basis: 50%;
 }
 .item p,
 .item img {
+  width: 25%;
   display: flex;
   justify-content: center;
 }
