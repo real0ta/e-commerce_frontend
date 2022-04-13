@@ -17,7 +17,7 @@ const Products = () => {
     const products = useSelector((state: RootState) => state.products);
     const dispatch = useDispatch();
     useEffect(() => {
-        if (products.products.length == 0) {
+        if (products.products.length === 0) {
             instance
                 .get("/product")
                 .then((res) => {
@@ -28,7 +28,7 @@ const Products = () => {
                     setError(true);
                 });
         }
-    }, [products]);
+    }, [dispatch, error, products]);
 
     if (error) {
         return (

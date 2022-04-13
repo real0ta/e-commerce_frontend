@@ -16,7 +16,12 @@ const Header = () => {
                     <div className={styles.logo}>Logo</div>
                     <Search />
                     <div className={styles.items}>
-                        <div onClick={() => setCart((prevState) => !prevState)}> Cart</div>
+                        <div
+                            className={styles.cart}
+                            onClick={() => setCart((prevState) => !prevState)}
+                        >
+                            Cart
+                        </div>
                         {cart ? <Cart /> : null}
                         {user.authenticated ? (
                             <p>logout</p>

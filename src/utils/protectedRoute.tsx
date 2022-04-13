@@ -1,7 +1,7 @@
 import React from "react";
 import { RootState } from "../app/store";
 import { useSelector } from "react-redux";
-import { useNavigate, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 interface Props {
     children?: React.ReactNode;
@@ -12,7 +12,7 @@ const ProtectedRoute = ({ children }: Props) => {
         (state: RootState) => state.user.authenticated
     );
     if (authenticated) {
-        return <Navigate to="/" />
+        return <Navigate to="/" />;
     }
     return <React.Fragment>{children} </React.Fragment>;
 };
