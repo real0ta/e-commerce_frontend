@@ -1,6 +1,7 @@
 .container {
   display: grid;
   grid-template-columns : repeat(4, 1fr);
+  padding: 0  10rem;
 }
 
 .error {
@@ -17,15 +18,46 @@
   padding-right: .5rem;
 }
 
+@media (max-width: 1050px) {
+  .container {
+    padding: 0 7rem;
+  }
+}
+
 @media (max-width: 970px) {
   .container {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
+@media (max-width: 900px) {
+  .container {
+    padding: 0 5rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .container {
+    padding: 0 3rem;
+  }
+}
+
 @media (max-width:630px){
   .container {
    grid-template-columns: repeat(2, 1fr);
+   padding: 0 2rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .container {
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .container {
+    padding: 0;
   }
 }
 
