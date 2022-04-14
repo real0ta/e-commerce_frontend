@@ -10,12 +10,14 @@ export interface ProductsState {
     name: string;
   }[];
   categories: { _id: string; name: string }[] | null;
+  productsByCategory: any[] | undefined;
 }
 
 const initialState: ProductsState = {
   products: [],
   cart: [],
   categories: null,
+  productsByCategory: undefined
 };
 
 export const ProductsSlice = createSlice({
@@ -49,7 +51,15 @@ export const ProductsSlice = createSlice({
     addCategories: (state, action: PayloadAction<any>) => {
       state.categories = action.payload;
     },
+    addProductsByCategory: (state, action: PayloadAction<object[]>) => {
+      state.productsByCategory = action.payload;
+    },
   },
 });
-export const { addProducts, addToCart, addCategories } = ProductsSlice.actions;
+export const {
+  addProducts,
+  addToCart,
+  addCategories,
+  addProductsByCategory,
+} = ProductsSlice.actions;
 export default ProductsSlice.reducer;
