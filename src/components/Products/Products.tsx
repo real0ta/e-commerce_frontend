@@ -1,10 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Product from "../Product/Product";
 import styles from "./Products.module.css";
-import instance from "../../utils/axios";
 import { RootState } from "../../app/store";
-import { useSelector, useDispatch } from "react-redux";
-import { addProducts } from "../../features/products/productsSlice";
+import { useSelector } from "react-redux";
+import useGetProducts from "../../utils/useFetchData";
 type productTypes = {
     name: string;
     price: Number;
@@ -13,23 +12,8 @@ type productTypes = {
 };
 
 const Products = () => {
-    const [error, setError] = useState(false);
     const products = useSelector((state: RootState) => state.products);
-    const dispatch = useDispatch();
-    useEffect(() => {
-        if (products.products.length === 0) {
-            instance
-                .get("/product")
-                .then((res) => {
-                    if (error) setError(false);
-                    dispatch(addProducts(res.data.products));
-                })
-                .catch((err) => {
-                    setError(true);
-                });
-        }
-    }, [dispatch, error, products]);
-
+    const error = useGetProducts()
     if (error) {
         return (
             <div className={styles.error}>
