@@ -9,11 +9,13 @@ export interface ProductsState {
     price: number;
     name: string;
   }[];
+  categories: { _id: string; name: string }[] | null;
 }
 
 const initialState: ProductsState = {
   products: [],
   cart: [],
+  categories: null,
 };
 
 export const ProductsSlice = createSlice({
@@ -43,7 +45,11 @@ export const ProductsSlice = createSlice({
 
       console.log(action.payload.id);
     },
+
+    addCategories: (state, action: PayloadAction<any>) => {
+      state.categories = action.payload;
+    },
   },
 });
-export const { addProducts, addToCart } = ProductsSlice.actions;
+export const { addProducts, addToCart, addCategories } = ProductsSlice.actions;
 export default ProductsSlice.reducer;
