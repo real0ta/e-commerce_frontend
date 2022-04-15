@@ -1,8 +1,9 @@
 import Product from "../Product/Product";
-import styles from "./Products.module.css";
+import styles from "../Products/Products.module.css";
 import { RootState } from "../../app/store";
 import { useSelector } from "react-redux";
-import useGetProducts from "../../utils/useFetchData";
+import useFetchDataByCategory from "../../utils/useFetchDataByCategory";
+import { useParams } from "react-router-dom";
 type productTypes = {
     name: string;
     price: Number;
@@ -11,20 +12,23 @@ type productTypes = {
 };
 
 const Products = () => {
-    const products = useSelector((state: RootState) => state.products.products);
-    const error = useGetProducts();
+    const params = useParams();
+    const productsByCategory = useSelector(
+        (state: RootState) => state.products.productsByCategory
+    );
+    const error = useFetchDataByCategory(params.name);
 
     if (error) {
         return (
             <div className={styles.error}>
-                <span>Error! </span> Could not load products
+                <span>Error! </span> Could not find products in {params.name} category
             </div>
         );
     }
 
     return (
         <div className={styles.container}>
-            {products.map(({ name, price, photo, _id }: productTypes) => (
+            {productsByCategory?.map(({ name, price, photo, _id }: productTypes) => (
                 <Product id={_id} key={_id} name={name} price={price} image={photo} />
             ))}
         </div>

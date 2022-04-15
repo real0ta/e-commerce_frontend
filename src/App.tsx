@@ -6,6 +6,7 @@ import LoginPage from "./components/LoginPage/LoginPage";
 import Checkout from "./components/Checkout/Checkout";
 import ProtectedRoute from "./utils/protectedRoute";
 import Products from "./components/Products/Products";
+import ProductsByCategory from "./components/ProductsByCategory/ProductsByCategory";
 
 function App() {
     return (
@@ -14,7 +15,7 @@ function App() {
                 <Header />
                 <Routes>
                     <Route path="/" element={<Products />} />
-                    <Route path="/category/:name" element={<Products />} />
+                    <Route path="/category/:name" element={<ProductsByCategory />} />
                     <Route path="/products/:id" element={<ProductPage />} />
                     <Route path="/checkout" element={<Checkout />} />
                     <Route
