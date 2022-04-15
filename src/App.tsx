@@ -1,7 +1,6 @@
 import Header from "./components/Header/Header";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-import Home from "./components/Home/Home";
 import ProductPage from "./components/ProductPage/ProductPage";
 import LoginPage from "./components/LoginPage/LoginPage";
 import Checkout from "./components/Checkout/Checkout";

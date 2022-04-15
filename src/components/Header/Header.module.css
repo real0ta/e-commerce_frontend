@@ -62,6 +62,13 @@
   cursor: pointer;
 }
 
+.btn {
+  background-color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+}
+
 @media (max-width: 440px) {
   .links_container {
     display: none;

@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { RootState } from "../../app/store";
 import { useSelector, useDispatch } from "react-redux";
 import { addCategories } from "../../features/products/productsSlice";
+import { addAccessToken, Authenticate } from "../../features/user/userSlice";
 import instance from "../../utils/axios";
 
 const Header = () => {
@@ -17,6 +18,13 @@ const Header = () => {
         (state: RootState) => state.products.categories
     );
     const dispatch = useDispatch();
+
+
+    const logoutUser = () => {
+        localStorage.removeItem("token");
+        dispatch(addAccessToken(""));
+        dispatch(Authenticate(false));
+    };
 
     useEffect(() => {
         if (categories) return;
@@ -46,7 +54,7 @@ const Header = () => {
                         </button>
                         {cart ? <Cart /> : null}
                         {user.authenticated ? (
-                            <p>logout</p>
+                            <button onClick={logoutUser} className={styles.btn} >logout</button>
                         ) : (
                             <Link to="/login">Login</Link>
                         )}
