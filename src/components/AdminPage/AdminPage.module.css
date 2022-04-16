@@ -1,0 +1,32 @@
+.container {
+  padding: 1rem 8rem;
+}
+
+.container ul {
+  display: flex;
+  justify-content: space-evenly;
+  border-top: red 1px solid;
+  border-bottom: red 1px solid;
+}
+.container ul li {
+  padding: 1rem;
+  width: 100%;
+  cursor: pointer;
+  list-style: none;
+}
+.container ul li:hover {
+  background-color: rgba(00,00,00, .2);
+}
+.container article {
+  display: flex;
+  justify-content: space-between;
+  padding: 2.5rem;
+  width: 100%;
+  background-color: blue;
+}
+
+.container article .option {
+  display: flex;
+  justify-content: space-between;
+
+}

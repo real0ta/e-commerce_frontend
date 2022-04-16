@@ -1,12 +1,13 @@
-import Header from "./components/Header/Header";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
+import Header from "./components/Header/Header";
 import ProductPage from "./components/ProductPage/ProductPage";
 import LoginPage from "./components/LoginPage/LoginPage";
 import Checkout from "./components/Checkout/Checkout";
 import ProtectedRoute from "./utils/protectedRoute";
 import Products from "./components/Products/Products";
 import ProductsByCategory from "./components/ProductsByCategory/ProductsByCategory";
+import AdminPage from './components/AdminPage/AdminPage'
 
 function App() {
     return (
@@ -18,6 +19,7 @@ function App() {
                     <Route path="/category/:name" element={<ProductsByCategory />} />
                     <Route path="/products/:id" element={<ProductPage />} />
                     <Route path="/checkout" element={<Checkout />} />
+                    <Route path="/admin" element={<AdminPage />} />
                     <Route
                         path="/login"
                         element={
