@@ -83,8 +83,13 @@
   }
 }
 
-@media (max-width: 440px) {
-  .links_container {
+@media (max-width: 380px) {
+  .logo {
     display: none;
+  }
+
+  .nav_item {
+    padding: 1rem 2rem;
+    justify-content: space-between;
   }
 }

@@ -7,10 +7,22 @@ const Categories = () => {
     const categories = useSelector(
         (state: RootState) => state.products.categories
     );
+
+    if (!categories) {
+        return (
+            <article className={styles.container}>
+                <p>Could not find categories</p>
+            </article>
+        );
+    }
     return (
         <article className={styles.container}>
             {categories?.map(({ _id, name }) => {
-                return <Link key={_id} to={`/category/${name}`}>{name}</Link>;
+                return (
+                    <Link key={_id} to={`/category/${name}`}>
+                        {name}
+                    </Link>
+                );
             })}
         </article>
     );
