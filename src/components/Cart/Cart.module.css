@@ -8,6 +8,9 @@
   z-index: 1;
 }
 
+.container p {
+  text-align: center;
+}
 .products {
   height: 80%;
   padding: .3rem;
