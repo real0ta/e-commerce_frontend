@@ -1,6 +1,47 @@
+import { useState, useEffect } from "react";
 import styles from "./ProductPage.module.css";
+import { useParams } from "react-router-dom";
+import instance from "../../utils/axios";
 
+type productType = {
+    _id: string,
+    name: string,
+    photo: string,
+    category: string,
+    categoryName: string,
+    description: string,
+    price: number,
+    quantity: number,
+
+}
 const ProductPage = () => {
+    const [error, setError] = useState(false);
+    const [product, setProduct] = useState<productType>()
+    const params = useParams();
+
+    useEffect(() => {
+        setError(false)
+        const getData = async () => {
+            try {
+                const response = await instance({
+                    method: "get",
+                    url: `/product/${params.id}`,
+                });
+                setProduct(response.data[0])
+            } catch (er) {
+                setError(true);
+            }
+        };
+
+        getData()
+    }, []);
+
+    if(!error) return (
+        <div className={styles.error}>
+            <span>Error!</span> could not load product
+        </div>
+    )
+
     return (
         <div className={styles.container}>
             <div className={styles.item}>
@@ -8,26 +49,22 @@ const ProductPage = () => {
                     <img
                         alt="product"
                         className={styles.img}
-                        src="https://images.pexels.com/photos/1958587/pexels-photo-1958587.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                        src={`http://localhost:3001/${product?.photo}`}
                     />
                 </div>
                 <div className={styles.product_info}>
-                    <h3 className={styles.name}>Product name</h3>
-                    <h4 className={styles.price}>Price</h4>
+                    <h3 className={styles.name}>{product?.name}</h3>
+                    <h4 className={styles.price}>{product?.price}</h4>
                     <div className={styles.info}>
                         <div className={styles.hor}>
                             <h4>Avaliability</h4> <h4>In Stock</h4>
                         </div>
                         <div className={styles.hor}>
-                            <h4>Category</h4> <h4>Hats</h4>
+                            <h4>Category</h4> <h4>{product?.categoryName}</h4>
                         </div>
                     </div>
                     <article className={styles.description}>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                            enim ad minim veniam,
-                        </p>
+                        <p>{product?.description}</p>
                     </article>
                     <div className={styles.cart}>
                         <div className={styles.quantity}>
