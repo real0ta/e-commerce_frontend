@@ -2,45 +2,65 @@ import { useState, useEffect } from "react";
 import styles from "./ProductPage.module.css";
 import { useParams } from "react-router-dom";
 import instance from "../../utils/axios";
-
+import { addToCart } from "../../features/products/productsSlice";
+import { useDispatch } from "react-redux";
 type productType = {
-    _id: string,
-    name: string,
-    photo: string,
-    category: string,
-    categoryName: string,
-    description: string,
-    price: number,
-    quantity: number,
-
-}
+    _id: string;
+    name: string;
+    photo: string;
+    category: string;
+    categoryName: string;
+    description: string;
+    price: number;
+    quantity: number;
+};
 const ProductPage = () => {
     const [error, setError] = useState(false);
-    const [product, setProduct] = useState<productType>()
+    const [amount, setAmount] = useState(1);
+    const [product, setProduct] = useState<productType>();
+    const dispatch = useDispatch();
     const params = useParams();
 
+    const handleAddingToCart = () => {
+        const productToAdd = {
+            id: product?._id,
+            name: product?.name,
+            price: product?.price,
+            image: product?.photo,
+        };
+
+        if (amount > 1) {
+            for (let i = 0; i < amount; i++) {
+                dispatch(addToCart(productToAdd));
+            }
+        } else {
+            dispatch(addToCart(productToAdd));
+        }
+    };
+
     useEffect(() => {
-        setError(false)
+        setError(false);
         const getData = async () => {
             try {
                 const response = await instance({
                     method: "get",
                     url: `/product/${params.id}`,
                 });
-                setProduct(response.data[0])
+                setProduct(response.data[0]);
             } catch (er) {
                 setError(true);
             }
         };
 
-        getData()
+        getData();
     }, []);
 
-    if(!error) return (
-        <div className={styles.error}>
-            <span>Error!</span> could not load product
-        </div>
-    )
+    if (error)
+        return (
+            <div className={styles.error}>
+                <span>Error!</span> could not load product
+            </div>
+        );
 
     return (
         <div className={styles.container}>
@@ -68,11 +88,21 @@ const ProductPage = () => {
                     </article>
                     <div className={styles.cart}>
                         <div className={styles.quantity}>
-                            <h3>-</h3>
-                            <h3>2</h3>
-                            <h3>+</h3>
+                            <button
+                                onClick={() => {
+                                    if (amount > 1) setAmount((prevAmount) => prevAmount - 1);
+                                }}
+                            >
+                                -
+                            </button>
+                            <h3>{amount}</h3>
+                            <button onClick={() => setAmount((prevAmount) => prevAmount + 1)}>
+                                +
+                            </button>
                         </div>
-                        <div className={styles.add}>Add To Cart</div>
+                        <button onClick={handleAddingToCart} className={styles.add}>
+                            Add To Cart
+                        </button>
                     </div>
                 </div>
             </div>

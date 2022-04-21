@@ -66,20 +66,23 @@
   text-transform: capitalize;
 }
 
-.quantity {
-  height: 100%;
-  width: 7rem;
+.quantity  {
   background-color: rgba(00,00,00, .1);
   border-radius: 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
 }
 
-.quantity:first-child:hover,
-.quantity:last-child:hover {
-  background-color: rgba(00,00,00, .2);
+.quantity button {
+  cursor: pointer;
+  border: none;
+  padding: 1rem;
+  font-size: 1rem;
+}
+
+.quantity h3 {
+  padding: 1rem;
 }
 
 .description {
@@ -96,13 +99,18 @@
   }
 
 .add {
+  cursor: pointer;
+  border: none;
   background-color: rgba(00,00,00, .1);
   padding:1rem;
-  border-radius: 5px;
-  height: 100%;
+  font-size: 1rem;
   display:flex;
   align-items: center;
   text-align: center;
+}
+
+.add:hover {
+  background-color: rgba(00,00,00, .2);
 }
 
 @media (max-width: 1160px){
