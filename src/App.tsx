@@ -7,7 +7,8 @@ import Checkout from "./components/Checkout/Checkout";
 import ProtectedRoute from "./utils/protectedRoute";
 import Products from "./components/Products/Products";
 import ProductsByCategory from "./components/ProductsByCategory/ProductsByCategory";
-import AdminPage from './components/AdminPage/AdminPage'
+import AdminPage from "./components/AdminPage/AdminPage";
+import SearchResults from "./components/SearchResults/SearchResults";
 
 function App() {
     return (
@@ -18,6 +19,7 @@ function App() {
                     <Route path="/" element={<Products />} />
                     <Route path="/category/:name" element={<ProductsByCategory />} />
                     <Route path="/products/:id" element={<ProductPage />} />
+                    <Route path="/search/:string" element={<SearchResults />} />
                     <Route path="/checkout" element={<Checkout />} />
                     <Route path="/admin" element={<AdminPage />} />
                     <Route
