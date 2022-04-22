@@ -1,7 +1,16 @@
 import { createSlice, PayloadAction, current } from "@reduxjs/toolkit";
 
 export interface ProductsState {
-  products: any[];
+  products: {
+    _id: string;
+    name: string;
+    photo: string;
+    category: string;
+    categoryName: string;
+    description: string;
+    price: number;
+    quantity: number;
+  }[];
   cart: {
     amount: number;
     id: string;
@@ -17,14 +26,14 @@ const initialState: ProductsState = {
   products: [],
   cart: [],
   categories: null,
-  productsByCategory: undefined
+  productsByCategory: undefined,
 };
 
 export const ProductsSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
-    addProducts: (state, action: PayloadAction<object[]>) => {
+    addProducts: (state, action: PayloadAction<ProductsState["products"]>) => {
       state.products = action.payload;
     },
     addToCart: (state, action: PayloadAction<any>) => {
@@ -47,7 +56,10 @@ export const ProductsSlice = createSlice({
 
       console.log(action.payload.id);
     },
-
+    removeFromCart: (state, action: PayloadAction<string>) => {
+      const newState = state.cart.filter((item) => item.id !== action.payload);
+      state.cart = newState;
+    },
     addCategories: (state, action: PayloadAction<any>) => {
       state.categories = action.payload;
     },
@@ -61,5 +73,6 @@ export const {
   addToCart,
   addCategories,
   addProductsByCategory,
+  removeFromCart,
 } = ProductsSlice.actions;
 export default ProductsSlice.reducer;

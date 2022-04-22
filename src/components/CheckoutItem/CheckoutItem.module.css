@@ -14,3 +14,15 @@
   display: flex;
   justify-content: center;
 }
+
+.btn_container {
+  width: 25%;
+  display: flex;
+  justify-content: center;
+}
+.item button {
+  cursor: pointer;
+  background-color: white;
+  border: none;
+  font-size: 1rem;
+}
