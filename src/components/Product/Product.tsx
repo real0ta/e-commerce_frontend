@@ -9,6 +9,7 @@ type Props = {
     price: Number;
     image: string;
     id: string;
+
 };
 
 const Product = ({ id, name, price, image }: Props) => {

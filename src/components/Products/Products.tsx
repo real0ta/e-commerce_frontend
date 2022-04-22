@@ -4,10 +4,14 @@ import { RootState } from "../../app/store";
 import { useSelector } from "react-redux";
 import useGetProducts from "../../utils/useFetchData";
 type productTypes = {
-    name: string;
-    price: Number;
-    photo: string;
-    _id: string;
+    _id: string,
+    name: string,
+    photo: string,
+    category: string,
+    categoryName: string,
+    description: string,
+    price: number,
+    quantity: number,
 };
 
 const Products = () => {
@@ -24,7 +28,7 @@ const Products = () => {
 
     return (
         <div className={styles.container}>
-            {products.map(({ name, price, photo, _id }: productTypes) => (
+            {products.map(({ name, price, photo, _id, categoryName, description }: productTypes) => (
                 <Product id={_id} key={_id} name={name} price={price} image={photo} />
             ))}
         </div>
