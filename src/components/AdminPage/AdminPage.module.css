@@ -1,12 +1,13 @@
 .container {
-  padding: 1rem 8rem;
+  padding: 1rem 5rem;
 }
 
 .container ul {
   display: flex;
   justify-content: space-evenly;
-  border-top: red 1px solid;
-  border-bottom: red 1px solid;
+  text-align: center;
+  padding-bottom: .05rem;
+  border-bottom: 1px solid gray;
 }
 .container ul li {
   padding: 1rem;
@@ -19,14 +20,21 @@
 }
 .container article {
   display: flex;
-  justify-content: space-between;
-  padding: 2.5rem;
+  justify-content: space-around;
+  align-items: center;
+  padding: 2rem 0;
   width: 100%;
-  background-color: blue;
 }
 
-.container article .option {
-  display: flex;
-  justify-content: space-between;
+.container article img {
+  width: 8rem;
+  height: 15rem;
+}
 
+
+.container article  button {
+  background-color: white;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
 }
