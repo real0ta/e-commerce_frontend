@@ -9,6 +9,8 @@ import Products from "./components/Products/Products";
 import ProductsByCategory from "./components/ProductsByCategory/ProductsByCategory";
 import AdminPage from "./components/AdminPage/AdminPage";
 import SearchResults from "./components/SearchResults/SearchResults";
+import AddProduct from "./components/AddProduct/AddProduct";
+import AdminProducts from "./components/AdminPage/AdminProducts";
 
 function App() {
     return (
@@ -21,7 +23,10 @@ function App() {
                     <Route path="/products/:id" element={<ProductPage />} />
                     <Route path="/search/:string" element={<SearchResults />} />
                     <Route path="/checkout" element={<Checkout />} />
-                    <Route path="/admin" element={<AdminPage />} />
+                    <Route path="/admin/" element={<AdminPage />}>
+                        <Route path="" element={<AdminProducts />} />
+                        <Route path="add-product" element={<AddProduct />} />
+                    </Route>
                     <Route
                         path="/login"
                         element={
