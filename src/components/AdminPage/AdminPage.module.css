@@ -18,29 +18,10 @@
 .container ul a:hover {
   background-color: rgba(00,00,00, .2);
 }
-.container article {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 2rem 0;
-  width: 100%;
-}
-
-.container article img {
-  width: 8rem;
-  height: 15rem;
-}
 
 
-.container article  button {
-  background-color: white;
-  border: none;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-@media (max-width: 550px) {
+@media (max-width: 800px) {
   .container {
-    padding: 1rem 2rem;
+    padding: 1rem .5rem;
   }
 }
