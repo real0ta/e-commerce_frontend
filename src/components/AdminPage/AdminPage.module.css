@@ -7,15 +7,15 @@
   justify-content: space-evenly;
   text-align: center;
   padding-bottom: .05rem;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid rgba(00,00,00, .2);
 }
-.container ul li {
+.container ul a{
+  text-decoration: none;
   padding: 1rem;
   width: 100%;
   cursor: pointer;
-  list-style: none;
 }
-.container ul li:hover {
+.container ul a:hover {
   background-color: rgba(00,00,00, .2);
 }
 .container article {
@@ -37,4 +37,10 @@
   border: none;
   font-size: 1rem;
   cursor: pointer;
+}
+
+@media (max-width: 550px) {
+  .container {
+    padding: 1rem 2rem;
+  }
 }
