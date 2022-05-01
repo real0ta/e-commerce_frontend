@@ -3,6 +3,7 @@ import CheckoutItem from "../CheckoutItem/CheckoutItem";
 import styles from "./Checkout.module.css";
 import { useSelector } from "react-redux";
 import { RootState } from "../../app/store";
+import Stripe from '../Stripe/Stripe';
 
 const Checkout = () => {
     const items = useSelector((state: RootState) => state.products.cart);
@@ -41,6 +42,8 @@ const Checkout = () => {
             {items.length === 0 ? (
                 <p className={styles.error}>Add products to cart</p>
             ) : null}
+
+            {items.length !== 0 ? <Stripe /> : null}
         </div>
     );
 };

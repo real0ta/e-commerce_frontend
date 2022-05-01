@@ -9,6 +9,8 @@ interface Props {
     minLength?: number;
     onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
     value?: string;
+    accept?: string;
+    placeholder?: string;
 }
 
 const FormInput = ({
