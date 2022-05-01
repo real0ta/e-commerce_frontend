@@ -16,10 +16,6 @@
   width: 100%;
 }
 
-.btns {
-  width: fit-content;
-}
-
 .info>* {
   width: 33%;
   display: flex;
@@ -41,6 +37,16 @@
 
 .container button:hover {
   background-color: rgba(00,00,00, .15);
+}
+
+.success {
+  padding: 1.8rem 0;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.error {
+  border: 1px solid red;
 }
 
 @media (max-width: 600px) {

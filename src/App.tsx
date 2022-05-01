@@ -12,6 +12,7 @@ import SearchResults from "./components/SearchResults/SearchResults";
 import AddProduct from "./components/AddProduct/AddProduct";
 import AdminProducts from "./components/AdminPage/AdminProducts";
 import AdminCategories from "./components/AdminCategories/AdminCategories";
+import AddCategory from "./components/AddCategory/AddCategory";
 
 function App() {
     return (
@@ -28,6 +29,8 @@ function App() {
                         <Route path="" element={<AdminProducts />} />
                         <Route path="add-product" element={<AddProduct />} />
                         <Route path="categories" element={<AdminCategories />} />
+                        <Route path="add-category" element={<AddCategory />} />
+
                     </Route>
                     <Route
                         path="/login"
