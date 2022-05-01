@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
 import styles from "./AdminPage.module.css";
 import useFetchData from '../../utils/useFetchData'
 
@@ -7,10 +7,10 @@ const AdminPage = () => {
     return (
         <div className={styles.container}>
             <ul>
-                <li>See Products</li>
-                <li>Add Product</li>
-                <li>See Categories</li>
-                <li>Add Category</li>
+                <Link to="/admin">Products</Link>
+                <Link to="/admin/add-product">Add Product</Link>
+                <Link to="/admin/categories">Categories</Link>
+                <Link to="/add-product">Add Category</Link>
             </ul>
             <Outlet />
         </div>

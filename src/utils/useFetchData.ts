@@ -7,7 +7,7 @@ import {
 } from "../features/products/productsSlice";
 import instance from "./axios";
 
-const useGetProducts = () => {
+const useFetchData = () => {
   const dispatch = useDispatch();
   const [error, setError] = useState(false);
   const products = useSelector((state: RootState) => state.products.products)
@@ -29,4 +29,4 @@ const useGetProducts = () => {
   return error;
 };
 
-export default useGetProducts;
+export default useFetchData;

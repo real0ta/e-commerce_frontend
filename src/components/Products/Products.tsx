@@ -2,7 +2,7 @@ import Product from "../Product/Product";
 import styles from "./Products.module.css";
 import { RootState } from "../../app/store";
 import { useSelector } from "react-redux";
-import useGetProducts from "../../utils/useFetchData";
+import useFetchData from "../../utils/useFetchData";
 type productTypes = {
     _id: string,
     name: string,
@@ -16,7 +16,7 @@ type productTypes = {
 
 const Products = () => {
     const products = useSelector((state: RootState) => state.products.products);
-    const error = useGetProducts();
+    const error = useFetchData();
 
     if (error) {
         return (

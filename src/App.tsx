@@ -11,6 +11,7 @@ import AdminPage from "./components/AdminPage/AdminPage";
 import SearchResults from "./components/SearchResults/SearchResults";
 import AddProduct from "./components/AddProduct/AddProduct";
 import AdminProducts from "./components/AdminPage/AdminProducts";
+import AdminCategories from "./components/AdminCategories/AdminCategories";
 
 function App() {
     return (
@@ -26,6 +27,7 @@ function App() {
                     <Route path="/admin/" element={<AdminPage />}>
                         <Route path="" element={<AdminProducts />} />
                         <Route path="add-product" element={<AddProduct />} />
+                        <Route path="categories" element={<AdminCategories />} />
                     </Route>
                     <Route
                         path="/login"
