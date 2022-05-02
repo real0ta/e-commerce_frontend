@@ -30,19 +30,6 @@
   padding-bottom: 1rem;
 }
 
-.container button {
-  width: 50%;
-  padding: .7rem 1rem;
-  background-color: rgba(00, 00, 00, .2);
-  outline: none;
-  border:none;
-  cursor: pointer;
-}
-.container button:hover {
-  background-color: rgba(00, 00, 00, .3);
-}
-
-
 @media (max-width: 900px) {
   .container {
     padding: 0 2rem 1rem 2rem;
