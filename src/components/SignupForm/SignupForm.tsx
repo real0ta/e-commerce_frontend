@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import FormInput from "../FormInput/FormInput";
 import styles from "./SignupForm.module.css";
 import instance from "../../utils/axios";
+import Button from "../Button/Button";
 
 const SignupForm = (): JSX.Element => {
     const [username, setUsername] = useState("");
@@ -104,7 +105,7 @@ const SignupForm = (): JSX.Element => {
                 />
 
                 {passwordError ? <p className={styles.error}>{passwordError}</p> : null}
-                <button type="submit">Sign Up</button>
+                <Button>Sign Up</Button>
             </form>
         </div>
     );

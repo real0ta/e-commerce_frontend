@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import FormInput from '../FormInput/FormInput'
 import styles from '../AddProduct/AddProduct.module.css'
+import Button from '../Button/Button'
 const AddCategory = () => {
     const [category, setCategory] = useState("")
     return <form className={styles.container}>
@@ -13,7 +14,7 @@ const AddCategory = () => {
             inputType="text"
             placeholder="Category name"
         />
-        <button type="submit">Add Category</button>
+        <Button>Add Category</Button>
     </form>
 }
 

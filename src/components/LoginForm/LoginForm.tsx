@@ -4,6 +4,7 @@ import styles from "./LoginForm.module.css";
 import instance from "../../utils/axios";
 import { useDispatch } from "react-redux";
 import { addAccessToken, Authenticate } from "../../features/user/userSlice";
+import Button from "../Button/Button";
 
 const LoginForm = () => {
     const [email, setEmail] = useState<string>("");
@@ -53,7 +54,7 @@ const LoginForm = () => {
                     required
                     minLength={8}
                 />
-                <button type="submit">Sign In</button>
+                <Button>Sign In</Button>
             </form>
         </div>
     );
