@@ -9,6 +9,15 @@
   padding: .5rem;
 }
 
+.success {
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.error {
+  border: 1px solid red;
+}
+
 .container button {
   cursor: pointer;
   font-size: 1rem;
