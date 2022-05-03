@@ -50,7 +50,7 @@ const AddProduct = () => {
     return (
         <form onSubmit={handleSubmit} className={styles.container}>
             {created ? <p>Product created successfuly</p> : null}
-            {error ? <p>Could not create product</p> : null}
+            {error ? <p><span>Error!</span> Could not create product</p> : null}
             <FormInput
                 required
                 onChange={(e: React.FormEvent<HTMLInputElement>) =>

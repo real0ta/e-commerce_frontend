@@ -18,6 +18,10 @@
   font-size: 1.3rem;
 }
 
+.container p span {
+  color: red;
+}
+
 @media (max-width: 1160px) {
   .container {
     padding: 3rem 10rem;
