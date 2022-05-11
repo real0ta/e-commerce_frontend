@@ -15,14 +15,12 @@ const AdminProduct = ({ id, name, image, price, category }: Props) => {
     const [error, setError] = useState(false)
 
     const handleDelete = async () => {
-        console.log(id)
         setSuccess(false)
         setError(false)
         try {
             const res = await instance.delete(`/product/${id}`)
             setSuccess(true)
         } catch (err) {
-            console.log(err)
             setError(true)
         }
     }

@@ -28,14 +28,11 @@ const CheckoutForm = () => {
                     id: id,
                     items: items
                 })
-                console.log(res)
                 alert(res.data.message)
             } catch (err: any) {
-                console.log(err.response)
             }
 
         } else {
-            console.log(error)
         }
     }
     return (

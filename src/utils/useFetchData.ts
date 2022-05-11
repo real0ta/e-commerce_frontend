@@ -14,7 +14,6 @@ const useFetchData = () => {
   const getData = async (url: string) => {
     try {
       const res = await instance({ method: "get", url: url });
-      console.log(res.data);
       dispatch(addProducts(res.data.products));
     } catch (er) {
       setError(true);

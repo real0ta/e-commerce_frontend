@@ -54,7 +54,6 @@ export const ProductsSlice = createSlice({
         state.cart.push({ amount: 1, ...action.payload });
       }
 
-      console.log(action.payload.id);
     },
     removeFromCart: (state, action: PayloadAction<string>) => {
       const newState = state.cart.filter((item) => item.id !== action.payload);

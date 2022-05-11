@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Search from "../Search/Search";
 import styles from "./Header.module.css";
 import Cart from "../Cart/Cart";
@@ -31,11 +31,9 @@ const Header = () => {
         instance
             .get("/category")
             .then((res) => {
-                console.log(res);
                 dispatch(addCategories(res.data.categories));
             })
             .catch((err) => {
-                console.log(err);
             });
     }, [categories, dispatch]);
 

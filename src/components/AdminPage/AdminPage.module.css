@@ -19,9 +19,15 @@
   background-color: rgba(00,00,00, .2);
 }
 
-
 @media (max-width: 800px) {
   .container {
     padding: 1rem .5rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .container ul a{
+    padding: 1rem .5rem;
+    font-size:.9rem;
   }
 }
