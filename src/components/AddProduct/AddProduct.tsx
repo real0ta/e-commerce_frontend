@@ -3,10 +3,11 @@ import styles from "./AddProduct.module.css";
 import FormInput from "../FormInput/FormInput";
 import { useSelector } from "react-redux";
 import { RootState } from "../../app/store";
-import instance from "../../utils/axios";
+import useAxios from "../../utils/useAxios";
 import Button from "../Button/Button";
 
 const AddProduct = () => {
+    const api = useAxios();
     const categories = useSelector(
         (state: RootState) => state.products.categories
     );
@@ -38,11 +39,10 @@ const AddProduct = () => {
         }
 
         try {
-            const response = await instance.post("/product/", formData);
+            const response = await api.post("/product/", formData);
             if (response.status === 201) {
                 setCreated(true);
             }
-            console.log(response);
         } catch (err: any) {
             setError(true);
         }
@@ -50,7 +50,11 @@ const AddProduct = () => {
     return (
         <form onSubmit={handleSubmit} className={styles.container}>
             {created ? <p>Product created successfuly</p> : null}
-            {error ? <p><span>Error!</span> Could not create product</p> : null}
+            {error ? (
+                <p>
+                    <span>Error!</span> Could not create product
+                </p>
+            ) : null}
             <FormInput
                 required
                 onChange={(e: React.FormEvent<HTMLInputElement>) =>
@@ -103,7 +107,6 @@ const AddProduct = () => {
                 label="Product image"
                 inputType="file"
             />
-
 
             <Button>Add Product</Button>
         </form>
