@@ -13,37 +13,45 @@ import AddProduct from "./components/AddProduct/AddProduct";
 import AdminProducts from "./components/AdminPage/AdminProducts";
 import AdminCategories from "./components/AdminCategories/AdminCategories";
 import AddCategory from "./components/AddCategory/AddCategory";
+import AdminRoute from "./utils/AdminRoute";
 
 function App() {
-    return (
-        <Router>
-            <div className="App">
-                <Header />
-                <Routes>
-                    <Route path="/" element={<Products />} />
-                    <Route path="/category/:name" element={<ProductsByCategory />} />
-                    <Route path="/products/:id" element={<ProductPage />} />
-                    <Route path="/search/:string" element={<SearchResults />} />
-                    <Route path="/checkout" element={<Checkout />} />
-                    <Route path="/admin/" element={<AdminPage />}>
-                        <Route path="" element={<AdminProducts />} />
-                        <Route path="add-product" element={<AddProduct />} />
-                        <Route path="categories" element={<AdminCategories />} />
-                        <Route path="add-category" element={<AddCategory />} />
-
-                    </Route>
-                    <Route
-                        path="/login"
-                        element={
-                            <ProtectedRoute>
-                                <LoginPage />
-                            </ProtectedRoute>
-                        }
-                    />
-                </Routes>
-            </div>
-        </Router>
-    );
+  return (
+    <Router>
+      <div className="App">
+        <Header />
+        <Routes>
+          <Route path="/" element={<Products />} />
+          <Route path="/category/:name" element={<ProductsByCategory />} />
+          <Route path="/products/:id" element={<ProductPage />} />
+          <Route path="/search/:string" element={<SearchResults />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route
+            path="/admin/"
+            element={
+              <AdminRoute>
+                {" "}
+                <AdminPage />{" "}
+              </AdminRoute>
+            }
+          >
+            <Route path="" element={<AdminProducts />} />
+            <Route path="add-product" element={<AddProduct />} />
+            <Route path="categories" element={<AdminCategories />} />
+            <Route path="add-category" element={<AddCategory />} />
+          </Route>
+          <Route
+            path="/login"
+            element={
+              <ProtectedRoute>
+                <LoginPage />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+      </div>
+    </Router>
+  );
 }
 
 export default App;
