@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../app/store";
 import { addAccessToken } from "../features/user/userSlice";
 import jwt_decode from "jwt-decode";
-const BASE_URL = "http://localhost:3001";
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 type TokenTypes = {
   exp: number;
