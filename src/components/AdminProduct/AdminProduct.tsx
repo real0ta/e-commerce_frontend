@@ -4,13 +4,12 @@ import useAxios from "../../utils/useAxios";
 
 type Props = {
   name: string;
-  image: string;
   price: number;
   category: string;
   id: string;
 };
 
-const AdminProduct = ({ id, name, image, price, category }: Props) => {
+const AdminProduct = ({ id, name, price, category }: Props) => {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
   const instance = useAxios();

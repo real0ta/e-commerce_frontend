@@ -10,7 +10,6 @@ const AdminProducts = () => {
           name={item.name}
           price={item.price}
           category={item.categoryName}
-          image={item.image}
           key={item._id}
           id={item._id}
         />
