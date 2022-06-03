@@ -11,7 +11,7 @@ type productTypes = {
   description: string;
   price: number;
   quantity: number;
-  image: Object;
+  image: any;
 };
 
 const Products = () => {
