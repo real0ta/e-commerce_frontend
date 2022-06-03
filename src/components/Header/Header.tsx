@@ -51,7 +51,7 @@ const Header = () => {
             {cart ? <Cart /> : null}
             {user.authenticated || localStorage.getItem("token") ? (
               <button onClick={logoutUser} className={styles.btn}>
-                logout
+                Logout
               </button>
             ) : (
               <Link to="/login">Login</Link>

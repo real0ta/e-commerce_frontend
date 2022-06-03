@@ -39,7 +39,7 @@ const Product = ({ id, name, price, image }: Props) => {
       </div>
       <div className={styles.info}>
         <p className={styles.name}>{name}</p>
-        <p>{price}</p>
+        <p>${price}</p>
         <button onClick={addProduct} className={styles.btn}>
           ADD TO CART
         </button>
