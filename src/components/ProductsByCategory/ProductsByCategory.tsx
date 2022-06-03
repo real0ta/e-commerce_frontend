@@ -5,34 +5,36 @@ import { useSelector } from "react-redux";
 import useFetchDataByCategory from "../../utils/useFetchDataByCategory";
 import { useParams } from "react-router-dom";
 type productTypes = {
-    name: string;
-    price: Number;
-    photo: string;
-    _id: string;
+  name: string;
+  price: Number;
+  image: {
+    data: [];
+  };
+  _id: string;
 };
 
 const Products = () => {
-    const params = useParams();
-    const productsByCategory = useSelector(
-        (state: RootState) => state.products.productsByCategory
-    );
-    const error = useFetchDataByCategory(params.name);
+  const params = useParams();
+  const productsByCategory = useSelector(
+    (state: RootState) => state.products.productsByCategory
+  );
+  const error = useFetchDataByCategory(params.name);
 
-    if (error) {
-        return (
-            <div className={styles.error}>
-                <span>Error! </span> Could not find products in {params.name} category
-            </div>
-        );
-    }
-
+  if (error) {
     return (
-        <div className={styles.container}>
-            {productsByCategory?.map(({ name, price, photo, _id }: productTypes) => (
-                <Product id={_id} key={_id} name={name} price={price} image={photo} />
-            ))}
-        </div>
+      <div className={styles.error}>
+        <span>Error! </span> Could not find products in {params.name} category
+      </div>
     );
+  }
+
+  return (
+    <div className={styles.container}>
+      {productsByCategory?.map(({ name, price, image, _id }: productTypes) => (
+        <Product id={_id} key={_id} name={name} price={price} image={image} />
+      ))}
+    </div>
+  );
 };
 
 export default Products;

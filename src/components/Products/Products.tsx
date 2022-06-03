@@ -6,12 +6,12 @@ import useFetchData from "../../utils/useFetchData";
 type productTypes = {
   _id: string;
   name: string;
-  photo: string;
   category: string;
   categoryName: string;
   description: string;
   price: number;
   quantity: number;
+  image: Object;
 };
 
 const Products = () => {
@@ -32,12 +32,12 @@ const Products = () => {
         ({
           name,
           price,
-          photo,
+          image,
           _id,
           categoryName,
           description,
         }: productTypes) => (
-          <Product id={_id} key={_id} name={name} price={price} image={photo} />
+          <Product id={_id} key={_id} name={name} price={price} image={image} />
         )
       )}
     </div>

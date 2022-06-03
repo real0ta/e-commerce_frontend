@@ -4,7 +4,7 @@ export interface ProductsState {
   products: {
     _id: string;
     name: string;
-    photo: string;
+    image: Object;
     category: string;
     categoryName: string;
     description: string;
@@ -53,7 +53,6 @@ export const ProductsSlice = createSlice({
       } else {
         state.cart.push({ amount: 1, ...action.payload });
       }
-
     },
     removeFromCart: (state, action: PayloadAction<string>) => {
       const newState = state.cart.filter((item) => item.id !== action.payload);
