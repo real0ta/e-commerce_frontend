@@ -55,10 +55,11 @@ const ProductPage = () => {
         setLoading(false);
         setProduct(response.data[0]);
         const img = btoa(
-          String.fromCharCode(...new Uint8Array(response.data.image.data))
+          String.fromCharCode(...new Uint8Array(response.data[0].image.data))
         );
         setImage(img);
       } catch (er) {
+        console.log(er);
         setLoading(false);
 
         setError(true);
