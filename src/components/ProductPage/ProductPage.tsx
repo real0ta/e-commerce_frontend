@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import instance from "../../utils/axios";
 import { addToCart } from "../../features/products/productsSlice";
 import { useDispatch } from "react-redux";
+import Loading from "../Loading/Loading";
 type productType = {
   _id: string;
   name: string;
@@ -63,7 +64,7 @@ const ProductPage = () => {
   }, []);
 
   if (loading) {
-    return <div className={styles.error}>Loading...</div>;
+    return <Loading />;
   }
 
   if (error) {

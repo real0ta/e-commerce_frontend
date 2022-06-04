@@ -3,6 +3,7 @@ import styles from "./Products.module.css";
 import { RootState } from "../../app/store";
 import { useSelector } from "react-redux";
 import useFetchData from "../../utils/useFetchData";
+import Loading from "../Loading/Loading";
 type productTypes = {
   _id: string;
   name: string;
@@ -17,6 +18,10 @@ type productTypes = {
 const Products = () => {
   const products = useSelector((state: RootState) => state.products.products);
   const error = useFetchData();
+
+  if (error || products.length === 0) {
+    return <Loading />;
+  }
 
   if (error || products.length === 0) {
     return (
