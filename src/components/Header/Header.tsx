@@ -39,7 +39,9 @@ const Header = () => {
     <header className={styles.container}>
       <nav className={styles.nav}>
         <div className={styles.nav_item}>
-          <div className={styles.logo}>E-Commerce</div>
+          <Link to="/" className={styles.logo}>
+            E-Commerce
+          </Link>
           <Search />
           <div className={styles.items}>
             <button
@@ -60,14 +62,7 @@ const Header = () => {
         </div>
         <div className={styles.links_container}>
           <div className={styles.links}>
-            <Link to="/">Home</Link>
-            <div className={styles.dropdown}>
-              <button onClick={() => setdropDown((prevState) => !prevState)}>
-                Categories
-              </button>
-              {dropDown ? <Categories /> : null}
-            </div>
-            <Link to="/">Contact</Link>
+            <Categories />
           </div>
         </div>
       </nav>

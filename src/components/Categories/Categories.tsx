@@ -10,21 +10,21 @@ const Categories = () => {
 
   if (categories === null || categories?.length === 0) {
     return (
-      <article className={styles.container}>
+      <>
         <p>Could not find categories</p>
-      </article>
+      </>
     );
   }
   return (
-    <article className={styles.container}>
+    <>
       {categories?.map(({ _id, name }) => {
         return (
-          <Link key={_id} to={`/category/${name}`}>
+          <Link key={_id} to={`/category/${name}`} className={styles.link}>
             {name}
           </Link>
         );
       })}
-    </article>
+    </>
   );
 };
 
