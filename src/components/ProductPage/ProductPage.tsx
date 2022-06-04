@@ -7,7 +7,9 @@ import { useDispatch } from "react-redux";
 type productType = {
   _id: string;
   name: string;
-  photo: string;
+  image: {
+    data: [];
+  };
   category: string;
   categoryName: string;
   description: string;
@@ -26,7 +28,6 @@ const ProductPage = () => {
       id: product?._id,
       name: product?.name,
       price: product?.price,
-      image: product?.photo,
     };
 
     if (amount > 1) {
@@ -69,7 +70,9 @@ const ProductPage = () => {
           <img
             alt="product"
             className={styles.img}
-            src={`http://localhost:3001/${product?.photo}`}
+            src={`data:image/png;base64,${btoa(
+              String.fromCharCode(...new Uint8Array(product?.image.data))
+            )}`}
           />
         </div>
         <div className={styles.product_info}>

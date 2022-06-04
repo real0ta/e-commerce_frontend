@@ -5,11 +5,7 @@
   align-items: center;
 }
 
-.item img {
-  flex-basis: 50%;
-}
-.item p,
-.item img {
+.item p {
   width: 25%;
   display: flex;
   justify-content: center;

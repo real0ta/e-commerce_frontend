@@ -12,9 +12,6 @@
   align-items: center;
 }
 
-.product {
-  flex-basis: 50%;
-}
 .info h3 {
   width: 25%;
   display: flex;
