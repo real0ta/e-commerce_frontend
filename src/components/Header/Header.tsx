@@ -9,10 +9,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { addCategories } from "../../features/products/productsSlice";
 import { addAccessToken, Authenticate } from "../../features/user/userSlice";
 import instance from "../../utils/axios";
+import {
+  IoLogOutOutline,
+  IoCartOutline,
+  IoLogInOutline,
+} from "react-icons/io5";
 
 const Header = () => {
   const [cart, setCart] = useState(false);
-  const [dropDown, setdropDown] = useState(false);
   const user = useSelector((state: RootState) => state.user);
   const categories = useSelector(
     (state: RootState) => state.products.categories
@@ -40,7 +44,7 @@ const Header = () => {
       <nav className={styles.nav}>
         <div className={styles.nav_item}>
           <Link to="/" className={styles.logo}>
-            E-Commerce
+            E-Comm
           </Link>
           <Search />
           <div className={styles.items}>
@@ -48,15 +52,18 @@ const Header = () => {
               className={styles.cart}
               onClick={() => setCart((prevState) => !prevState)}
             >
-              Cart
+              <IoCartOutline />
             </button>
+
             {cart ? <Cart /> : null}
             {user.authenticated || localStorage.getItem("token") ? (
-              <button onClick={logoutUser} className={styles.btn}>
-                Logout
+              <button onClick={logoutUser} className={styles.logout}>
+                <IoLogOutOutline />
               </button>
             ) : (
-              <Link to="/login">Login</Link>
+              <Link className={styles.login} to="/login">
+                <IoLogInOutline />
+              </Link>
             )}
           </div>
         </div>

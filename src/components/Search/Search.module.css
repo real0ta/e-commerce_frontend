@@ -19,12 +19,14 @@
   color: #757575;
 }
 
-.container p {
+.container button  {
   transition: background 200ms ease-out;
   background-color: white;
-  font-size: 1rem;
+  font-size: 1.2rem;
   border: none;
-  margin-left: -1.4rem;
+  margin-left: -1.6rem;
+  margin-top: .1rem;
+  cursor: pointer;
 }
 .search:hover{
   border: 1px solid #c6c6c6;
@@ -32,9 +34,6 @@
 }
 
 @media (max-width: 480px) {
-  .container {
-    order: 2;
-  }
 }
 
 @media (max-width: 380px) {

@@ -17,6 +17,7 @@ type productType = {
   quantity: number;
 };
 const ProductPage = () => {
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [amount, setAmount] = useState(1);
   const [product, setProduct] = useState<productType>();
@@ -28,6 +29,7 @@ const ProductPage = () => {
       id: product?._id,
       name: product?.name,
       price: product?.price,
+      image: product?.image,
     };
 
     if (amount > 1) {
@@ -41,14 +43,18 @@ const ProductPage = () => {
 
   useEffect(() => {
     setError(false);
+    setLoading(true);
     const getData = async () => {
       try {
         const response = await instance({
           method: "get",
           url: `/product/${params.id}`,
         });
+        setLoading(false);
         setProduct(response.data[0]);
       } catch (er) {
+        setLoading(false);
+
         setError(true);
       }
     };
@@ -56,13 +62,17 @@ const ProductPage = () => {
     getData();
   }, []);
 
-  if (error)
+  if (loading) {
+    return <div className={styles.error}>Loading...</div>;
+  }
+
+  if (error) {
     return (
       <div className={styles.error}>
         <span>Error!</span> could not load product
       </div>
     );
-
+  }
   return (
     <div className={styles.container}>
       <div className={styles.item}>

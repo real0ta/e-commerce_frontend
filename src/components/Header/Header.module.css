@@ -1,7 +1,7 @@
 .nav{
   height:100%;
   width:100%;
-  padding: 0 9rem;
+  padding: 0 12%;
   border-bottom: 1px solid rgba(00,00,00,.07);
 }
 
@@ -23,7 +23,6 @@
   font-size: 1.2rem;
   font-weight: 700;
   text-transform: uppercase;
-  padding-right: 1rem;
   text-decoration: none;
   color: black;
 }
@@ -40,7 +39,7 @@
   cursor: pointer;
   background-color: white;
   border: none;
-  font-size: 1rem;
+  font-size: 1.5rem;
 }
 
 .links_container {
@@ -58,22 +57,16 @@
   align-items: center;
 }
 
-.dropdown {
-  position: relative;
-  display: inline block;
-}
-
-.dropdown button {
+.logout {
   background-color: white;
-  border: none;
-  font-size: 1rem;
+  font-size: 1.5rem;
   cursor: pointer;
-  margin-left: .1rem;
+  border: none;
 }
 
-.btn {
-  background-color: white;
-  font-size: 1rem;
+.login {
+  color: black;
+  font-size: 1.5rem;
   cursor: pointer;
   border: none;
 }
@@ -92,11 +85,10 @@
 
 @media (max-width: 380px) {
   .logo {
-    display: none;
+    font-size: 1rem;
   }
 
   .nav_item {
-    padding: 1rem 2rem;
     justify-content: space-between;
   }
 }
