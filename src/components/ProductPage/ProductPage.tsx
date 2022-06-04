@@ -22,6 +22,7 @@ const ProductPage = () => {
   const [error, setError] = useState(false);
   const [amount, setAmount] = useState(1);
   const [product, setProduct] = useState<productType>();
+  const [image, setImage] = useState("");
   const dispatch = useDispatch();
   const params = useParams();
 
@@ -53,6 +54,10 @@ const ProductPage = () => {
         });
         setLoading(false);
         setProduct(response.data[0]);
+        const img = btoa(
+          String.fromCharCode(...new Uint8Array(response.data.image.data))
+        );
+        setImage(img);
       } catch (er) {
         setLoading(false);
 
@@ -81,9 +86,7 @@ const ProductPage = () => {
           <img
             alt="product"
             className={styles.img}
-            src={`data:image/png;base64,${btoa(
-              String.fromCharCode(...new Uint8Array(product?.image.data))
-            )}`}
+            src={`data:image/png;base64,${image}`}
           />
         </div>
         <div className={styles.product_info}>
