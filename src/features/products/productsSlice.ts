@@ -14,7 +14,9 @@ export interface ProductsState {
   cart: {
     amount: number;
     id: string;
-    image: string;
+    image: {
+      data: [];
+    };
     price: number;
     name: string;
   }[];
