@@ -1,5 +1,6 @@
 .link {
   color: black;
+  padding: 1.2rem .5rem;
 }
 
 .link:hover {

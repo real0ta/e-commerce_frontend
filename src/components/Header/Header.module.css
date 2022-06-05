@@ -44,13 +44,12 @@
 
 .links_container {
   display: flex;
-  padding: 1.5rem;
   justify-content: space-around;
   align-items: center;
 }
 
 .links {
-  column-gap: 3rem;
+  column-gap: 2rem;
   display: flex;
   justify-content: center;
   align-content: center;

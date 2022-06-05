@@ -19,7 +19,7 @@ const Products = () => {
   const products = useSelector((state: RootState) => state.products.products);
   const error = useFetchData();
 
-  if (error || products.length === 0) {
+  if (products.length === 0) {
     return <Loading />;
   }
 
