@@ -52,8 +52,4 @@
   }
 }
 
-@media (max-width: 380px) {
-  .container {
-    left: .1rem;
-  }
-}
+

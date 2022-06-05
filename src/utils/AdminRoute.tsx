@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { addAccessToken } from "../features/user/userSlice";
 import instance from "./axios";
 import jwt_decode from "jwt-decode";
+import { Navigate } from "react-router-dom";
 
 interface Props {
   children?: React.ReactNode;
@@ -39,11 +40,7 @@ const AdminRoute = ({ children }: Props) => {
     }
   }
 
-  return (
-    <div>
-      <p>Admin page</p>
-    </div>
-  );
+  return <Navigate to="/" />;
 };
 
 export default AdminRoute;
