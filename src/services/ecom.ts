@@ -7,7 +7,10 @@ export const ecomApi = createApi({
     getProducts: builder.query<any, void>({
       query: () => `product`,
     }),
+    getCategories: builder.query<any, void>({
+      query: () => `category`,
+    }),
   }),
 });
 
-export const { useGetProductsQuery } = ecomApi;
+export const { useGetProductsQuery, useGetCategoriesQuery } = ecomApi;
