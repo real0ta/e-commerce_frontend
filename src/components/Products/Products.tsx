@@ -1,11 +1,9 @@
 import Product from "../Product/Product";
 import styles from "./Products.module.css";
-import { RootState } from "../../app/store";
-import { useSelector } from "react-redux";
-import useFetchData from "../../utils/useFetchData";
 import Loading from "../Loading/Loading";
+import { useGetProductsQuery } from "../../services/ecom";
 type productTypes = {
-  _id: string;
+  id: string;
   name: string;
   category: string;
   categoryName: string;
@@ -16,14 +14,13 @@ type productTypes = {
 };
 
 const Products = () => {
-  const products = useSelector((state: RootState) => state.products.products);
-  const error = useFetchData();
+  const { data, error, isLoading } = useGetProductsQuery();
 
-  if (products.length === 0) {
+  if (isLoading) {
     return <Loading />;
   }
 
-  if (error || products.length === 0) {
+  if (!data || error) {
     return (
       <div className={styles.error}>
         <span>Error! </span> Could not load products
@@ -33,18 +30,9 @@ const Products = () => {
 
   return (
     <div className={styles.container}>
-      {products.map(
-        ({
-          name,
-          price,
-          image,
-          _id,
-          categoryName,
-          description,
-        }: productTypes) => (
-          <Product id={_id} key={_id} name={name} price={price} image={image} />
-        )
-      )}
+      {data.products.map(({ name, price, image, id }: productTypes) => (
+        <Product id={id} key={id} name={name} price={price} image={image} />
+      ))}
     </div>
   );
 };
