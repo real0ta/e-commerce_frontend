@@ -6,9 +6,7 @@ import instance from "../../utils/axios";
 type productTypes = {
   name: string;
   price: Number;
-  image: {
-    data: [];
-  };
+  image: string;
   _id: string;
 };
 

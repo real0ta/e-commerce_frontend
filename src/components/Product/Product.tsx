@@ -7,16 +7,12 @@ import { useDispatch } from "react-redux";
 type Props = {
   name: string;
   price: Number;
-  image: {
-    data: [];
-  };
+  image: string;
   id: string;
 };
 
 const Product = ({ id, name, price, image }: Props) => {
   const dispatch = useDispatch();
-  const img = btoa(String.fromCharCode(...new Uint8Array(image.data)));
-
   const addProduct = () => {
     const product = {
       id,
@@ -33,7 +29,7 @@ const Product = ({ id, name, price, image }: Props) => {
           <img
             alt="product"
             className={styles.img}
-            src={`data:image/png;base64,${img}`}
+            src={`localhost:3001/${image}`}
           />
         </Link>
       </div>

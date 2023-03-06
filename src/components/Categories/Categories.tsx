@@ -21,7 +21,7 @@ const Categories = () => {
     <>
       {data.categories.map(({ id, name }: { id: number; name: string }) => {
         return (
-          <Link key={id} to={`/category/${name}`} className={styles.link}>
+          <Link key={id} to={`/category/${id}`} className={styles.link}>
             {name}
           </Link>
         );
