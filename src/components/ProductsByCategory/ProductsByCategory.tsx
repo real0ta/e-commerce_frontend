@@ -1,24 +1,21 @@
 import Product from "../Product/Product";
 import styles from "../Products/Products.module.css";
-import { RootState } from "../../app/store";
-import { useSelector } from "react-redux";
-import useFetchDataByCategory from "../../utils/useFetchDataByCategory";
 import { useParams } from "react-router-dom";
+import { useGetProductsByCategoryIdQuery } from "../../services/ecom";
+import Loading from "../Loading/Loading";
 type productTypes = {
   name: string;
   price: Number;
-  image: {
-    data: [];
-  };
-  _id: string;
+  image: string;
+  id: string;
 };
 
 const Products = () => {
   const params = useParams();
-  const productsByCategory = useSelector(
-    (state: RootState) => state.products.productsByCategory
-  );
-  const error = useFetchDataByCategory(params.name);
+  const id = params.name as string;
+  const { data, error, isLoading } = useGetProductsByCategoryIdQuery(id);
+
+  if (isLoading) return <Loading />;
 
   if (error) {
     return (
@@ -30,8 +27,8 @@ const Products = () => {
 
   return (
     <div className={styles.container}>
-      {productsByCategory?.map(({ name, price, image, _id }: productTypes) => (
-        <Product id={_id} key={_id} name={name} price={price} image={image} />
+      {data.map(({ name, price, image, id }: productTypes) => (
+        <Product id={id} key={id} name={name} price={price} image={image} />
       ))}
     </div>
   );

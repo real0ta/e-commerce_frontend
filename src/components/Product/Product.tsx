@@ -22,6 +22,7 @@ const Product = ({ id, name, price, image }: Props) => {
     };
     dispatch(addToCart(product));
   };
+  console.log(image);
   return (
     <article className={styles.item}>
       <div>
@@ -29,7 +30,7 @@ const Product = ({ id, name, price, image }: Props) => {
           <img
             alt="product"
             className={styles.img}
-            src={`localhost:3001/${image}`}
+            src={`http://localhost:3001/${image}`}
           />
         </Link>
       </div>
