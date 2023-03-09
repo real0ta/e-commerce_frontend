@@ -10,11 +10,25 @@ export const ecomApi = createApi({
     getCategories: builder.query<any, void>({
       query: () => `category`,
     }),
-    getProductById: builder.query<any, number>({
+    getProductById: builder.query<any, string>({
       query: (id) => `product/${id}`,
     }),
     getProductsByCategoryId: builder.query<any, string>({
       query: (id) => `category/${id}`,
+    }),
+    signUpUser: builder.mutation<any, object>({
+      query: (body) => ({
+        url: "user",
+        method: "POST",
+        body,
+      }),
+    }),
+    signInUser: builder.mutation<any, object>({
+      query: (body) => ({
+        url: "user/login",
+        method: "POST",
+        body,
+      }),
     }),
   }),
 });
@@ -24,4 +38,6 @@ export const {
   useGetCategoriesQuery,
   useGetProductsByCategoryIdQuery,
   useGetProductByIdQuery,
+  useSignUpUserMutation,
+  useSignInUserMutation,
 } = ecomApi;
