@@ -30,6 +30,34 @@ export const ecomApi = createApi({
         body,
       }),
     }),
+    refreshToken: builder.mutation<any, string>({
+      query: (token) => ({
+        url: "user/refresh",
+        method: "POST",
+        body: { token },
+      }),
+    }),
+
+    addCategory: builder.mutation<any, { name: string; token: string }>({
+      query: ({ name, token }) => ({
+        url: "category",
+        method: "POST",
+        body: { name },
+        headers: {
+          Authentication: `Bearer ${token}`,
+        },
+      }),
+    }),
+
+    deleteProduct: builder.mutation<any, { id: number; token: string }>({
+      query: ({ id, token }) => ({
+        url: `product/${id}`,
+        method: "DELETE",
+        headers: {
+          Authentication: `Bearer ${token}`,
+        },
+      }),
+    }),
   }),
 });
 
@@ -40,4 +68,7 @@ export const {
   useGetProductByIdQuery,
   useSignUpUserMutation,
   useSignInUserMutation,
+  useAddCategoryMutation,
+  useRefreshTokenMutation,
+  useDeleteProductMutation,
 } = ecomApi;
