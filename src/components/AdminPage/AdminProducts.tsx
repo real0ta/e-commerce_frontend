@@ -1,17 +1,36 @@
-import { useSelector } from "react-redux";
-import { RootState } from "../../app/store";
 import AdminProduct from "../AdminProduct/AdminProduct";
+import { useGetProductsQuery } from "../../services/ecom";
+import Loading from "../Loading/Loading";
 const AdminProducts = () => {
-  const products = useSelector((state: RootState) => state.products.products);
+  type productTypes = {
+    id: number;
+    name: string;
+    categoryName: string;
+    price: number;
+  };
+  const { data, error, isLoading } = useGetProductsQuery();
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
+  if (!data || error) {
+    return (
+      <div>
+        <span>Error! </span> Could not load products
+      </div>
+    );
+  }
+
   return (
     <>
-      {products.map((item) => (
+      {data.products.map((item: productTypes) => (
         <AdminProduct
           name={item.name}
           price={item.price}
           category={item.categoryName}
-          key={item._id}
-          id={item._id}
+          key={item.id}
+          id={item.id}
         />
       ))}
     </>
