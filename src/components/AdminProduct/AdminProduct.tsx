@@ -1,31 +1,20 @@
-import { useState } from "react";
 import styles from "./AdminProduct.module.css";
-import useAxios from "../../utils/useAxios";
-
+import { useDeleteProductMutation } from "../../services/ecom";
 type Props = {
   name: string;
   price: number;
   category: string;
-  id: string;
+  id: number;
 };
 
 const AdminProduct = ({ id, name, price, category }: Props) => {
-  const [success, setSuccess] = useState(false);
-  const [error, setError] = useState(false);
-  const instance = useAxios();
+  const [deleteProduct, { isError, isSuccess }] = useDeleteProductMutation();
 
   const handleDelete = async () => {
-    setSuccess(false);
-    setError(false);
-    try {
-      const res = await instance.delete(`/product/${id}`);
-      setSuccess(true);
-    } catch (err) {
-      setError(true);
-    }
+    deleteProduct(id);
   };
 
-  if (success) {
+  if (isSuccess) {
     return (
       <article className={styles.container}>
         <p className={styles.success}>Product was deleted successfully</p>
@@ -33,7 +22,7 @@ const AdminProduct = ({ id, name, price, category }: Props) => {
     );
   }
   return (
-    <article className={`${styles.container} ${error ? styles.error : null}`}>
+    <article className={`${styles.container} ${isError ? styles.error : null}`}>
       <div className={styles.info}>
         <p>{name}</p>
         <p>{category}</p>
