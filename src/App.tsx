@@ -30,7 +30,6 @@ function App() {
             path="/admin/"
             element={
               <AdminRoute>
-                {" "}
                 <AdminPage />{" "}
               </AdminRoute>
             }

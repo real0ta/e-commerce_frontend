@@ -1,6 +1,5 @@
 import styles from "./Product.module.css";
 import { Link } from "react-router-dom";
-import React from "react";
 import { addToCart } from "../../features/products/productsSlice";
 import { useDispatch } from "react-redux";
 
@@ -13,6 +12,7 @@ type Props = {
 
 const Product = ({ id, name, price, image }: Props) => {
   const dispatch = useDispatch();
+
   const addProduct = () => {
     const product = {
       id,
@@ -22,7 +22,7 @@ const Product = ({ id, name, price, image }: Props) => {
     };
     dispatch(addToCart(product));
   };
-  console.log(image);
+
   return (
     <article className={styles.item}>
       <div>
