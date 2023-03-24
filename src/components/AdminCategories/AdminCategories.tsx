@@ -1,16 +1,26 @@
-import { RootState } from "../../app/store";
-import { useSelector } from "react-redux";
-import styles from "./AdminCategories.module.css";
 import AdminCategory from "../AdminCategory/AdminCategory";
+import Loading from "../Loading/Loading";
+import { useGetCategoriesQuery } from "../../services/ecom";
+
 const AdminCategories = () => {
-  const categories = useSelector(
-    (state: RootState) => state.products.categories
-  );
+  const { data, error, isLoading } = useGetCategoriesQuery();
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
+  if (error) {
+    return (
+      <>
+        <p>Could not find categories</p>
+      </>
+    );
+  }
 
   return (
     <>
-      {categories?.map(({ _id, name }) => (
-        <AdminCategory _id={_id} key={name} name={name} />
+      {data.categories.map(({ id, name }: { id: number; name: string }) => (
+        <AdminCategory id={id} key={name} name={name} />
       ))}
     </>
   );
