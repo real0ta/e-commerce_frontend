@@ -1,43 +1,25 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { addAccessToken } from "../features/user/userSlice";
-import instance from "./axios";
-import jwt_decode from "jwt-decode";
+import React from "react";
 import { Navigate } from "react-router-dom";
+import { useIsAdminQuery } from "../services/ecom";
+import Loading from "../components/Loading/Loading";
 
 interface Props {
   children?: React.ReactNode;
 }
 
-type TokenTypes = {
-  exp: number;
-  role: string;
-};
-
 const AdminRoute = ({ children }: Props) => {
-  const [token, setToken] = useState("");
-  const dispatch = useDispatch();
+  const { isSuccess, isError, isLoading } = useIsAdminQuery();
 
-  useEffect(() => {
-    const getAccessToken = async () => {
-      const refreshToken = localStorage.getItem("token");
-      try {
-        const res = await instance.post("/user/refresh/", {
-          token: refreshToken,
-        });
-        setToken(res.data.accessToken);
-        dispatch(addAccessToken(res.data.accessToken));
-      } catch (er) {}
-    };
+  if (isLoading) {
+    return (
+      <>
+        <Loading />
+      </>
+    );
+  }
 
-    getAccessToken();
-  });
-
-  if (token) {
-    const decoded: TokenTypes = jwt_decode(token);
-    if (decoded.role === "Admin") {
-      return <React.Fragment>{children}</React.Fragment>;
-    }
+  if (isSuccess) {
+    return <React.Fragment>{children}</React.Fragment>;
   }
 
   return <Navigate to="/" />;

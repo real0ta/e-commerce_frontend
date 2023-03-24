@@ -32,7 +32,15 @@ export const ecomApi = createApi({
         body,
       }),
     }),
-    refreshToken: builder.mutation<any, string>({
+
+    isAdmin: builder.query<any, void>({
+      query: () => ({
+        url: "user/isadmin",
+        method: "GET",
+        credentials: "include",
+      }),
+    }),
+    refreshToken: builder.mutation<any, void>({
       query: () => ({
         url: "user/refresh",
         method: "POST",
@@ -89,4 +97,5 @@ export const {
   useDeleteProductMutation,
   useAddProductMutation,
   useDeleteCategoryMutation,
+  useIsAdminQuery,
 } = ecomApi;
