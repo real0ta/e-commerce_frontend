@@ -1,8 +1,9 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import baseQueryWithReauth from "./customFetchBase";
 
 export const ecomApi = createApi({
   reducerPath: "ecomApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3001/" }),
+  baseQuery: baseQueryWithReauth,
   endpoints: (builder) => ({
     getProducts: builder.query<any, void>({
       query: () => `product`,
@@ -26,36 +27,51 @@ export const ecomApi = createApi({
     signInUser: builder.mutation<any, object>({
       query: (body) => ({
         url: "user/login",
+        credentials: "include",
         method: "POST",
         body,
       }),
     }),
     refreshToken: builder.mutation<any, string>({
-      query: (token) => ({
+      query: () => ({
         url: "user/refresh",
         method: "POST",
-        body: { token },
+        credentials: "include",
       }),
     }),
-
-    addCategory: builder.mutation<any, { name: string; token: string }>({
-      query: ({ name, token }) => ({
+    addCategory: builder.mutation<any, string>({
+      query: (category) => ({
         url: "category",
         method: "POST",
-        body: { name },
-        headers: {
-          Authentication: `Bearer ${token}`,
-        },
+        credentials: "include",
+        body: { name: category },
       }),
     }),
-
-    deleteProduct: builder.mutation<any, { id: number; token: string }>({
-      query: ({ id, token }) => ({
+    addProduct: builder.mutation<any, any>({
+      query: (data) => {
+        console.log(data);
+        return {
+          url: "product",
+          method: "POST",
+          body: data.data,
+          headers: {
+            Authentication: `Bearer ${data.token}`,
+          },
+        };
+      },
+    }),
+    deleteProduct: builder.mutation<any, number>({
+      query: (id) => ({
         url: `product/${id}`,
         method: "DELETE",
-        headers: {
-          Authentication: `Bearer ${token}`,
-        },
+        credentials: "include",
+      }),
+    }),
+    deleteCategory: builder.mutation<any, number>({
+      query: (id) => ({
+        url: `category/${id}`,
+        method: "DELETE",
+        credentials: "include",
       }),
     }),
   }),
@@ -71,4 +87,6 @@ export const {
   useAddCategoryMutation,
   useRefreshTokenMutation,
   useDeleteProductMutation,
+  useAddProductMutation,
+  useDeleteCategoryMutation,
 } = ecomApi;
