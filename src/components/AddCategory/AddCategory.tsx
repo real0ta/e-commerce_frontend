@@ -2,30 +2,15 @@ import React, { useState } from "react";
 import FormInput from "../FormInput/FormInput";
 import styles from "../AddProduct/AddProduct.module.css";
 import Button from "../Button/Button";
-import {
-  useAddCategoryMutation,
-  useRefreshTokenMutation,
-} from "../../services/ecom";
+import { useAddCategoryMutation } from "../../services/ecom";
 
 const AddCategory = () => {
   const [addCategory, { isError, isSuccess }] = useAddCategoryMutation();
-  const [refreshToken] = useRefreshTokenMutation();
   const [category, setCategory] = useState("");
-  const [error, setError] = useState(false);
-  const token = localStorage.getItem("token");
 
   const handleSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
-    setError(false);
-
-    try {
-      if (token) {
-        const data = await refreshToken(token).unwrap();
-        addCategory({ name: category, token: data.token });
-      }
-    } catch (err) {
-      setError(true);
-    }
+    addCategory(category);
   };
   return (
     <form onSubmit={handleSubmit} className={styles.container}>
