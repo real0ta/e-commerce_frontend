@@ -1,4 +1,4 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { createApi } from "@reduxjs/toolkit/query/react";
 import baseQueryWithReauth from "./customFetchBase";
 
 export const ecomApi = createApi({
@@ -55,16 +55,20 @@ export const ecomApi = createApi({
         body: { name: category },
       }),
     }),
-    addProduct: builder.mutation<any, any>({
+    addProduct: builder.mutation<any, { name: string, description: string, price: string, quantity: string, categoryId: string, image: Blob }>({
       query: (data) => {
-        console.log(data);
+        const form = new FormData()
+        form.append("name", data.name)
+        form.append("description", data.description)
+        form.append("price", data.price)
+        form.append("quantity", data.quantity)
+        form.append("category", data.categoryId)
+        form.append("image", data.image)
+
         return {
           url: "product",
           method: "POST",
-          body: data.data,
-          headers: {
-            Authentication: `Bearer ${data.token}`,
-          },
+          body: form,
         };
       },
     }),

@@ -1,56 +1,39 @@
 import React, { useState, useEffect } from "react";
 import styles from "./AddProduct.module.css";
 import FormInput from "../FormInput/FormInput";
-import { useSelector } from "react-redux";
-import { RootState } from "../../app/store";
-import useAxios from "../../utils/useAxios";
 import Button from "../Button/Button";
+import {
+  useAddProductMutation,
+  useGetCategoriesQuery,
+} from "../../services/ecom";
 
 const AddProduct = () => {
-  const api = useAxios();
-  const categories = useSelector(
-    (state: RootState) => state.products.categories
-  );
+  const { data } = useGetCategoriesQuery();
+  const [addProduct, { isError, isSuccess }] = useAddProductMutation();
   const [name, setName] = useState<string | undefined>("");
   const [description, setDescription] = useState<string | undefined>("");
   const [price, setPrice] = useState<string | undefined>("");
   const [categoryId, setCategoryId] = useState<string | undefined>("");
   const [image, setImage] = useState<any>();
-  const [created, setCreated] = useState(false);
-  const [error, setError] = useState(false);
+  const [quantity, setQuantity] = useState<string>("");
 
   useEffect(() => {
-    if (categories !== null) {
-      setCategoryId(categories[0]._id);
+    if (data) {
+      setCategoryId(data.categories[0].id);
     }
-  });
+  }, [data]);
 
-  let formData = new FormData();
   const handleSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
-    setCreated(false);
-    setError(false);
-    formData.append("photo", image[0]);
-    if (price && description && categoryId && name) {
-      formData.append("name", name);
-      formData.append("description", description);
-      formData.append("category", categoryId);
-      formData.append("price", price);
-    }
+    if (name && description && price && categoryId && image && quantity) {
 
-    try {
-      const response = await api.post("/product/", formData);
-      if (response.status === 201) {
-        setCreated(true);
-      }
-    } catch (err: any) {
-      setError(true);
+      addProduct({ name, description, categoryId, price, quantity, image: image[0] })
     }
   };
   return (
     <form onSubmit={handleSubmit} className={styles.container}>
-      {created ? <p>Product created successfuly</p> : null}
-      {error ? (
+      {isSuccess ? <p>Product created successfuly</p> : null}
+      {isError ? (
         <p>
           <span>Error!</span> Could not create product
         </p>
@@ -88,15 +71,31 @@ const AddProduct = () => {
         inputType="number"
         placeholder="10$"
       />
+      <FormInput
+        required
+        onChange={(e: React.FormEvent<HTMLInputElement>) =>
+          setQuantity(e.currentTarget.value)
+        }
+        value={quantity}
+        name="quantity"
+        label="Quantity"
+        inputType="number"
+        placeholder="0"
+      />
+
       <select
         name="categories"
         onChange={(e) => setCategoryId(e.currentTarget.value)}
       >
-        {categories?.map(({ _id, name }) => (
-          <option key={_id} value={_id}>
-            {name}
-          </option>
-        ))}
+        {data
+          ? data.categories.map(
+            ({ id, name }: { id: number; name: string }) => (
+              <option key={id} value={id}>
+                {name}
+              </option>
+            )
+          )
+          : null}
       </select>
 
       <FormInput

@@ -4,7 +4,7 @@ import type {
   FetchArgs,
   FetchBaseQueryError,
 } from "@reduxjs/toolkit/query/react";
-import { Authenticate, AddAccessToken } from "../features/user/userSlice";
+import { AddAccessToken } from "../features/user/userSlice";
 import { Mutex } from "async-mutex";
 
 const mutex = new Mutex();
