@@ -1,32 +1,24 @@
 import React, { useState } from "react";
 import FormInput from "../FormInput/FormInput";
 import styles from "./LoginForm.module.css";
-import { useDispatch } from "react-redux";
-import { Authenticate } from "../../features/user/userSlice";
 import Button from "../Button/Button";
+import { useNavigate } from "react-router-dom";
 import { useSignInUserMutation } from "../../services/ecom";
 
 const LoginForm = () => {
-  const [signInUser, { data, isError, isSuccess }] = useSignInUserMutation();
+  const [signInUser, { isError, isSuccess }] = useSignInUserMutation();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [error, setError] = useState<boolean>();
-
-  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.SyntheticEvent) => {
-    setError(false);
     e.preventDefault();
-    try {
-      signInUser({
-        email,
-        password,
-      });
-      localStorage.setItem("token", data.refreshToken);
-      dispatch(Authenticate(true));
-    } catch (err: any) {
-      setError(true);
-    }
+    await signInUser({
+      email,
+      password,
+    }).unwrap();
+
+    if (isSuccess) navigate(-1);
   };
   return (
     <div className={styles.container}>

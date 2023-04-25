@@ -4,7 +4,6 @@ import Header from "./components/Header/Header";
 import ProductPage from "./components/ProductPage/ProductPage";
 import LoginPage from "./components/LoginPage/LoginPage";
 import Checkout from "./components/Checkout/Checkout";
-import ProtectedRoute from "./utils/protectedRoute";
 import Products from "./components/Products/Products";
 import ProductsByCategory from "./components/ProductsByCategory/ProductsByCategory";
 import AdminPage from "./components/AdminPage/AdminPage";
@@ -14,6 +13,7 @@ import AdminProducts from "./components/AdminPage/AdminProducts";
 import AdminCategories from "./components/AdminCategories/AdminCategories";
 import AddCategory from "./components/AddCategory/AddCategory";
 import AdminRoute from "./utils/AdminRoute";
+import ProtectedRoute from "./utils/ProtectedRoute";
 
 function App() {
   return (
