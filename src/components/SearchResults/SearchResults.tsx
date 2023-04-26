@@ -1,51 +1,39 @@
-import { useState, useEffect } from "react";
 import styles from "../Products/Products.module.css";
 import Product from "../Product/Product";
+import Loading from '../Loading/Loading'
 import { useParams } from "react-router-dom";
-import instance from "../../utils/axios";
+import { useGetProductsByNameQuery}  from '../../services/ecom'
+  
 type productTypes = {
   name: string;
   price: Number;
   image: string;
-  _id: string;
+  id: string;
 };
 
 const SearchResults = () => {
-  const [products, setProducts] = useState<[]>();
-  const [error, setError] = useState(false);
   const params = useParams();
+  const {data, error, isLoading} = useGetProductsByNameQuery(params.string as string)
 
-  useEffect(() => {
-    setError(false);
-    const getData = async () => {
-      try {
-        const res = await instance({
-          method: "get",
-          url: `/product/?name=${params.string}`,
-        });
-        setProducts(res.data.products);
-      } catch (err: any) {
-        setError(true);
+    if (isLoading) {
+    return <Loading />
       }
-    };
-
-    getData();
-  }, [params.string]);
-
-  if (products?.length === 0 || error) {
+  
+    if (error) {
+      return (
+        <div className={styles.error}>
+          <span>Error! </span> Could not find products
+        </div>
+      );
+    }
     return (
-      <div className={styles.error}>
-        <span>Error! </span> Could not find products
+      <div className={styles.container}>
+        {data.products.map(({ name, price, image, id }: productTypes) => (
+          <Product id={id} key={id} name={name} price={price} image={image} />
+        ))}
       </div>
-    );
-  }
-  return (
-    <div className={styles.container}>
-      {products?.map(({ name, price, image, _id }: productTypes) => (
-        <Product id={_id} key={_id} name={name} price={price} image={image} />
-      ))}
-    </div>
-  );
+    ); 
+
 };
 
 export default SearchResults;

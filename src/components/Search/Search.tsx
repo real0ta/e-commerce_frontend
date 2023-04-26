@@ -9,7 +9,9 @@ const Search = () => {
 
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
-    navigate(`/search/${searchTerm}`);
+    if (searchTerm) {
+      navigate(`/search/${searchTerm}`);
+    }
   };
 
   return (
