@@ -3,10 +3,7 @@ import Search from "../Search/Search";
 import styles from "./Header.module.css";
 import Cart from "../Cart/Cart";
 import Categories from "../Categories/Categories";
-import { Link } from "react-router-dom";
-import { RootState } from "../../app/store";
-import { useSelector, useDispatch } from "react-redux";
-import { AddAccessToken, Authenticate } from "../../features/user/userSlice";
+import { Link, useNavigate } from "react-router-dom";
 import {
   IoLogOutOutline,
   IoCartOutline,
@@ -15,14 +12,18 @@ import {
 
 const Header = () => {
   const [cart, setCart] = useState(false);
-  const user = useSelector((state: RootState) => state.user);
-  const dispatch = useDispatch();
+  const cookie = document.cookie;
+  const navigate = useNavigate();
 
   const logoutUser = () => {
-    localStorage.removeItem("token");
-    dispatch(AddAccessToken(""));
-    dispatch(Authenticate(false));
+    const Cookies = document.cookie.split(";");
+    for (let i = 0; i < Cookies.length; i++) {
+      document.cookie = Cookies[i] + "=; expires=" + new Date(0).toUTCString();
+    }
+
+    navigate("/");
   };
+
 
   return (
     <header className={styles.container}>
@@ -41,7 +42,7 @@ const Header = () => {
             </button>
 
             {cart ? <Cart /> : null}
-            {user.authenticated || localStorage.getItem("token") ? (
+            {cookie.startsWith("signedIn") ? (
               <button onClick={logoutUser} className={styles.logout}>
                 <IoLogOutOutline />
               </button>
