@@ -4,12 +4,15 @@ import baseQueryWithReauth from "./customFetchBase";
 export const ecomApi = createApi({
   reducerPath: "ecomApi",
   baseQuery: baseQueryWithReauth,
+  tagTypes: ['Category', 'Product'],
   endpoints: (builder) => ({
     getProducts: builder.query<any, void>({
       query: () => `product`,
+      providesTags: ['Product'],
     }),
     getCategories: builder.query<any, void>({
       query: () => `category`,
+      providesTags: ['Category'],
     }),
     getProductById: builder.query<any, string>({
       query: (id) => `product/${id}`,
@@ -54,6 +57,7 @@ export const ecomApi = createApi({
         credentials: "include",
         body: { name: category },
       }),
+      invalidatesTags: ['Category'],
     }),
     addProduct: builder.mutation<any, { name: string, description: string, price: string, quantity: string, categoryId: string, image: Blob }>({
       query: (data) => {
@@ -71,6 +75,7 @@ export const ecomApi = createApi({
           body: form,
         };
       },
+      invalidatesTags: ['Product'],
     }),
     deleteProduct: builder.mutation<any, number>({
       query: (id) => ({
@@ -78,6 +83,7 @@ export const ecomApi = createApi({
         method: "DELETE",
         credentials: "include",
       }),
+      invalidatesTags: ['Product'],
     }),
     deleteCategory: builder.mutation<any, number>({
       query: (id) => ({
@@ -85,6 +91,7 @@ export const ecomApi = createApi({
         method: "DELETE",
         credentials: "include",
       }),
+      invalidatesTags: ['Category'],
     }),
   }),
 });
